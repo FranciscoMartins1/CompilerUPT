@@ -1,0 +1,2716 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    DIV
+
+Grammar
+
+Rule 0     S' -> Program
+Rule 1     Program -> ProgramHeader ProgramBody
+Rule 2     ProgramHeader -> PROGRAM ID SEMICOLON
+Rule 3     ProgramBody -> FuncDecls VarDecls Cmd
+Rule 4     FuncDecls -> empty
+Rule 5     FuncDecls -> Function FuncDecls
+Rule 6     Function -> FunctionHeader FunctionBody
+Rule 7     FunctionHeader -> FunctionType FUNCTION ID PAR_OPEN ParamList PAR_CLOSE COLON
+Rule 8     FunctionType -> INT
+Rule 9     FunctionType -> BOOL
+Rule 10    FunctionType -> VOID
+Rule 11    FunctionBody -> LBRACE VarDecls CmdList RBRACE
+Rule 12    ParamList -> empty
+Rule 13    ParamList -> ParamList1
+Rule 14    ParamList1 -> Param COMMA ParamList1
+Rule 15    ParamList1 -> Param
+Rule 16    Param -> ID COLON Type
+Rule 17    empty -> <empty>
+Rule 18    VarDecls -> empty
+Rule 19    VarDecls -> VarDecl VarDecls
+Rule 20    VarDecl -> VAR ID COLON Type SEMICOLON
+Rule 21    Type -> INT
+Rule 22    Type -> BOOL
+Rule 23    Expr -> NUMBER
+Rule 24    Expr -> TRUE
+Rule 25    Expr -> FALSE
+Rule 26    Expr -> ID
+Rule 27    Expr -> Expr BinOp Expr
+Rule 28    Expr -> UnOp Expr
+Rule 29    Expr -> PAR_OPEN Expr PAR_CLOSE
+Rule 30    Expr -> ID PAR_OPEN ExprList PAR_CLOSE
+Rule 31    Expr -> READ PAR_OPEN PAR_CLOSE
+Rule 32    BinOp -> PLUS
+Rule 33    BinOp -> MINUS
+Rule 34    BinOp -> TIMES
+Rule 35    BinOp -> EXPO
+Rule 36    BinOp -> MOD
+Rule 37    BinOp -> DIF
+Rule 38    BinOp -> EQUALS
+Rule 39    BinOp -> LESS
+Rule 40    BinOp -> GREATER
+Rule 41    BinOp -> LESS_EQUAL
+Rule 42    BinOp -> GREATER_EQUAL
+Rule 43    BinOp -> AND
+Rule 44    BinOp -> OR
+Rule 45    UnOp -> MINUS
+Rule 46    UnOp -> NOT
+Rule 47    ExprList -> empty
+Rule 48    ExprList -> ExprList1
+Rule 49    ExprList1 -> Expr
+Rule 50    ExprList1 -> Expr COMMA ExprList1
+Rule 51    Cmd -> CmdAtrib
+Rule 52    Cmd -> CmdIf
+Rule 53    Cmd -> CmdWhile
+Rule 54    Cmd -> CmdFor
+Rule 55    Cmd -> CmdBreak
+Rule 56    Cmd -> CmdPrint
+Rule 57    Cmd -> CmdReturn
+Rule 58    Cmd -> CmdSeq
+Rule 59    CmdAtrib -> ID
+Rule 60    CmdAtrib -> Expr
+Rule 61    CmdAtrib -> ID ASSIGN Expr
+Rule 62    CmdIf -> IF Expr COLON Cmd
+Rule 63    CmdIf -> IF Expr COLON Cmd ELSE COLON
+Rule 64    CmdWhile -> WHILE Expr COLON Cmd
+Rule 65    CmdFor -> FOR CmdAtrib TO Expr COLON Cmd
+Rule 66    CmdBreak -> BREAK
+Rule 67    CmdPrint -> PRINT PAR_OPEN ExprList PAR_CLOSE
+Rule 68    CmdReturn -> RETURN Expr
+Rule 69    CmdSeq -> LBRACE CmdList RBRACE
+Rule 70    CmdList -> Cmd SEMICOLON CmdList
+Rule 71    CmdList -> Cmd
+
+Terminals, with rules where they appear
+
+AND                  : 43
+ASSIGN               : 61
+BOOL                 : 9 22
+BREAK                : 66
+COLON                : 7 16 20 62 63 63 64 65
+COMMA                : 14 50
+DIF                  : 37
+DIV                  : 
+ELSE                 : 63
+EQUALS               : 38
+EXPO                 : 35
+FALSE                : 25
+FOR                  : 65
+FUNCTION             : 7
+GREATER              : 40
+GREATER_EQUAL        : 42
+ID                   : 2 7 16 20 26 30 59 61
+IF                   : 62 63
+INT                  : 8 21
+LBRACE               : 11 69
+LESS                 : 39
+LESS_EQUAL           : 41
+MINUS                : 33 45
+MOD                  : 36
+NOT                  : 46
+NUMBER               : 23
+OR                   : 44
+PAR_CLOSE            : 7 29 30 31 67
+PAR_OPEN             : 7 29 30 31 67
+PLUS                 : 32
+PRINT                : 67
+PROGRAM              : 2
+RBRACE               : 11 69
+READ                 : 31
+RETURN               : 68
+SEMICOLON            : 2 20 70
+TIMES                : 34
+TO                   : 65
+TRUE                 : 24
+VAR                  : 20
+VOID                 : 10
+WHILE                : 64
+error                : 
+
+Nonterminals, with rules where they appear
+
+BinOp                : 27
+Cmd                  : 3 62 63 64 65 70 71
+CmdAtrib             : 51 65
+CmdBreak             : 55
+CmdFor               : 54
+CmdIf                : 52
+CmdList              : 11 69 70
+CmdPrint             : 56
+CmdReturn            : 57
+CmdSeq               : 58
+CmdWhile             : 53
+Expr                 : 27 27 28 29 49 50 60 61 62 63 64 65 68
+ExprList             : 30 67
+ExprList1            : 48 50
+FuncDecls            : 3 5
+Function             : 5
+FunctionBody         : 6
+FunctionHeader       : 6
+FunctionType         : 7
+Param                : 14 15
+ParamList            : 7
+ParamList1           : 13 14
+Program              : 0
+ProgramBody          : 1
+ProgramHeader        : 1
+Type                 : 16 20
+UnOp                 : 28
+VarDecl              : 19
+VarDecls             : 3 11 19
+empty                : 4 12 18 47
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . Program
+    (1) Program -> . ProgramHeader ProgramBody
+    (2) ProgramHeader -> . PROGRAM ID SEMICOLON
+
+    PROGRAM         shift and go to state 3
+
+    Program                        shift and go to state 1
+    ProgramHeader                  shift and go to state 2
+
+state 1
+
+    (0) S' -> Program .
+
+
+
+state 2
+
+    (1) Program -> ProgramHeader . ProgramBody
+    (3) ProgramBody -> . FuncDecls VarDecls Cmd
+    (4) FuncDecls -> . empty
+    (5) FuncDecls -> . Function FuncDecls
+    (17) empty -> .
+    (6) Function -> . FunctionHeader FunctionBody
+    (7) FunctionHeader -> . FunctionType FUNCTION ID PAR_OPEN ParamList PAR_CLOSE COLON
+    (8) FunctionType -> . INT
+    (9) FunctionType -> . BOOL
+    (10) FunctionType -> . VOID
+
+    VAR             reduce using rule 17 (empty -> .)
+    ID              reduce using rule 17 (empty -> .)
+    IF              reduce using rule 17 (empty -> .)
+    WHILE           reduce using rule 17 (empty -> .)
+    FOR             reduce using rule 17 (empty -> .)
+    BREAK           reduce using rule 17 (empty -> .)
+    PRINT           reduce using rule 17 (empty -> .)
+    RETURN          reduce using rule 17 (empty -> .)
+    LBRACE          reduce using rule 17 (empty -> .)
+    NUMBER          reduce using rule 17 (empty -> .)
+    TRUE            reduce using rule 17 (empty -> .)
+    FALSE           reduce using rule 17 (empty -> .)
+    PAR_OPEN        reduce using rule 17 (empty -> .)
+    READ            reduce using rule 17 (empty -> .)
+    MINUS           reduce using rule 17 (empty -> .)
+    NOT             reduce using rule 17 (empty -> .)
+    INT             shift and go to state 10
+    BOOL            shift and go to state 11
+    VOID            shift and go to state 12
+
+    ProgramBody                    shift and go to state 4
+    FuncDecls                      shift and go to state 5
+    empty                          shift and go to state 6
+    Function                       shift and go to state 7
+    FunctionHeader                 shift and go to state 8
+    FunctionType                   shift and go to state 9
+
+state 3
+
+    (2) ProgramHeader -> PROGRAM . ID SEMICOLON
+
+    ID              shift and go to state 13
+
+
+state 4
+
+    (1) Program -> ProgramHeader ProgramBody .
+
+    $end            reduce using rule 1 (Program -> ProgramHeader ProgramBody .)
+
+
+state 5
+
+    (3) ProgramBody -> FuncDecls . VarDecls Cmd
+    (18) VarDecls -> . empty
+    (19) VarDecls -> . VarDecl VarDecls
+    (17) empty -> .
+    (20) VarDecl -> . VAR ID COLON Type SEMICOLON
+
+    ID              reduce using rule 17 (empty -> .)
+    IF              reduce using rule 17 (empty -> .)
+    WHILE           reduce using rule 17 (empty -> .)
+    FOR             reduce using rule 17 (empty -> .)
+    BREAK           reduce using rule 17 (empty -> .)
+    PRINT           reduce using rule 17 (empty -> .)
+    RETURN          reduce using rule 17 (empty -> .)
+    LBRACE          reduce using rule 17 (empty -> .)
+    NUMBER          reduce using rule 17 (empty -> .)
+    TRUE            reduce using rule 17 (empty -> .)
+    FALSE           reduce using rule 17 (empty -> .)
+    PAR_OPEN        reduce using rule 17 (empty -> .)
+    READ            reduce using rule 17 (empty -> .)
+    MINUS           reduce using rule 17 (empty -> .)
+    NOT             reduce using rule 17 (empty -> .)
+    VAR             shift and go to state 17
+
+    VarDecls                       shift and go to state 14
+    empty                          shift and go to state 15
+    VarDecl                        shift and go to state 16
+
+state 6
+
+    (4) FuncDecls -> empty .
+
+    VAR             reduce using rule 4 (FuncDecls -> empty .)
+    ID              reduce using rule 4 (FuncDecls -> empty .)
+    IF              reduce using rule 4 (FuncDecls -> empty .)
+    WHILE           reduce using rule 4 (FuncDecls -> empty .)
+    FOR             reduce using rule 4 (FuncDecls -> empty .)
+    BREAK           reduce using rule 4 (FuncDecls -> empty .)
+    PRINT           reduce using rule 4 (FuncDecls -> empty .)
+    RETURN          reduce using rule 4 (FuncDecls -> empty .)
+    LBRACE          reduce using rule 4 (FuncDecls -> empty .)
+    NUMBER          reduce using rule 4 (FuncDecls -> empty .)
+    TRUE            reduce using rule 4 (FuncDecls -> empty .)
+    FALSE           reduce using rule 4 (FuncDecls -> empty .)
+    PAR_OPEN        reduce using rule 4 (FuncDecls -> empty .)
+    READ            reduce using rule 4 (FuncDecls -> empty .)
+    MINUS           reduce using rule 4 (FuncDecls -> empty .)
+    NOT             reduce using rule 4 (FuncDecls -> empty .)
+
+
+state 7
+
+    (5) FuncDecls -> Function . FuncDecls
+    (4) FuncDecls -> . empty
+    (5) FuncDecls -> . Function FuncDecls
+    (17) empty -> .
+    (6) Function -> . FunctionHeader FunctionBody
+    (7) FunctionHeader -> . FunctionType FUNCTION ID PAR_OPEN ParamList PAR_CLOSE COLON
+    (8) FunctionType -> . INT
+    (9) FunctionType -> . BOOL
+    (10) FunctionType -> . VOID
+
+    VAR             reduce using rule 17 (empty -> .)
+    ID              reduce using rule 17 (empty -> .)
+    IF              reduce using rule 17 (empty -> .)
+    WHILE           reduce using rule 17 (empty -> .)
+    FOR             reduce using rule 17 (empty -> .)
+    BREAK           reduce using rule 17 (empty -> .)
+    PRINT           reduce using rule 17 (empty -> .)
+    RETURN          reduce using rule 17 (empty -> .)
+    LBRACE          reduce using rule 17 (empty -> .)
+    NUMBER          reduce using rule 17 (empty -> .)
+    TRUE            reduce using rule 17 (empty -> .)
+    FALSE           reduce using rule 17 (empty -> .)
+    PAR_OPEN        reduce using rule 17 (empty -> .)
+    READ            reduce using rule 17 (empty -> .)
+    MINUS           reduce using rule 17 (empty -> .)
+    NOT             reduce using rule 17 (empty -> .)
+    INT             shift and go to state 10
+    BOOL            shift and go to state 11
+    VOID            shift and go to state 12
+
+    Function                       shift and go to state 7
+    FuncDecls                      shift and go to state 18
+    empty                          shift and go to state 6
+    FunctionHeader                 shift and go to state 8
+    FunctionType                   shift and go to state 9
+
+state 8
+
+    (6) Function -> FunctionHeader . FunctionBody
+    (11) FunctionBody -> . LBRACE VarDecls CmdList RBRACE
+
+    LBRACE          shift and go to state 20
+
+    FunctionBody                   shift and go to state 19
+
+state 9
+
+    (7) FunctionHeader -> FunctionType . FUNCTION ID PAR_OPEN ParamList PAR_CLOSE COLON
+
+    FUNCTION        shift and go to state 21
+
+
+state 10
+
+    (8) FunctionType -> INT .
+
+    FUNCTION        reduce using rule 8 (FunctionType -> INT .)
+
+
+state 11
+
+    (9) FunctionType -> BOOL .
+
+    FUNCTION        reduce using rule 9 (FunctionType -> BOOL .)
+
+
+state 12
+
+    (10) FunctionType -> VOID .
+
+    FUNCTION        reduce using rule 10 (FunctionType -> VOID .)
+
+
+state 13
+
+    (2) ProgramHeader -> PROGRAM ID . SEMICOLON
+
+    SEMICOLON       shift and go to state 22
+
+
+state 14
+
+    (3) ProgramBody -> FuncDecls VarDecls . Cmd
+    (51) Cmd -> . CmdAtrib
+    (52) Cmd -> . CmdIf
+    (53) Cmd -> . CmdWhile
+    (54) Cmd -> . CmdFor
+    (55) Cmd -> . CmdBreak
+    (56) Cmd -> . CmdPrint
+    (57) Cmd -> . CmdReturn
+    (58) Cmd -> . CmdSeq
+    (59) CmdAtrib -> . ID
+    (60) CmdAtrib -> . Expr
+    (61) CmdAtrib -> . ID ASSIGN Expr
+    (62) CmdIf -> . IF Expr COLON Cmd
+    (63) CmdIf -> . IF Expr COLON Cmd ELSE COLON
+    (64) CmdWhile -> . WHILE Expr COLON Cmd
+    (65) CmdFor -> . FOR CmdAtrib TO Expr COLON Cmd
+    (66) CmdBreak -> . BREAK
+    (67) CmdPrint -> . PRINT PAR_OPEN ExprList PAR_CLOSE
+    (68) CmdReturn -> . RETURN Expr
+    (69) CmdSeq -> . LBRACE CmdList RBRACE
+    (23) Expr -> . NUMBER
+    (24) Expr -> . TRUE
+    (25) Expr -> . FALSE
+    (26) Expr -> . ID
+    (27) Expr -> . Expr BinOp Expr
+    (28) Expr -> . UnOp Expr
+    (29) Expr -> . PAR_OPEN Expr PAR_CLOSE
+    (30) Expr -> . ID PAR_OPEN ExprList PAR_CLOSE
+    (31) Expr -> . READ PAR_OPEN PAR_CLOSE
+    (45) UnOp -> . MINUS
+    (46) UnOp -> . NOT
+
+    ID              shift and go to state 32
+    IF              shift and go to state 34
+    WHILE           shift and go to state 35
+    FOR             shift and go to state 36
+    BREAK           shift and go to state 37
+    PRINT           shift and go to state 38
+    RETURN          shift and go to state 40
+    LBRACE          shift and go to state 41
+    NUMBER          shift and go to state 42
+    TRUE            shift and go to state 43
+    FALSE           shift and go to state 44
+    PAR_OPEN        shift and go to state 39
+    READ            shift and go to state 46
+    MINUS           shift and go to state 47
+    NOT             shift and go to state 48
+
+    Cmd                            shift and go to state 23
+    CmdAtrib                       shift and go to state 24
+    CmdIf                          shift and go to state 25
+    CmdWhile                       shift and go to state 26
+    CmdFor                         shift and go to state 27
+    CmdBreak                       shift and go to state 28
+    CmdPrint                       shift and go to state 29
+    CmdReturn                      shift and go to state 30
+    CmdSeq                         shift and go to state 31
+    Expr                           shift and go to state 33
+    UnOp                           shift and go to state 45
+
+state 15
+
+    (18) VarDecls -> empty .
+
+    ID              reduce using rule 18 (VarDecls -> empty .)
+    IF              reduce using rule 18 (VarDecls -> empty .)
+    WHILE           reduce using rule 18 (VarDecls -> empty .)
+    FOR             reduce using rule 18 (VarDecls -> empty .)
+    BREAK           reduce using rule 18 (VarDecls -> empty .)
+    PRINT           reduce using rule 18 (VarDecls -> empty .)
+    RETURN          reduce using rule 18 (VarDecls -> empty .)
+    LBRACE          reduce using rule 18 (VarDecls -> empty .)
+    NUMBER          reduce using rule 18 (VarDecls -> empty .)
+    TRUE            reduce using rule 18 (VarDecls -> empty .)
+    FALSE           reduce using rule 18 (VarDecls -> empty .)
+    PAR_OPEN        reduce using rule 18 (VarDecls -> empty .)
+    READ            reduce using rule 18 (VarDecls -> empty .)
+    MINUS           reduce using rule 18 (VarDecls -> empty .)
+    NOT             reduce using rule 18 (VarDecls -> empty .)
+
+
+state 16
+
+    (19) VarDecls -> VarDecl . VarDecls
+    (18) VarDecls -> . empty
+    (19) VarDecls -> . VarDecl VarDecls
+    (17) empty -> .
+    (20) VarDecl -> . VAR ID COLON Type SEMICOLON
+
+    ID              reduce using rule 17 (empty -> .)
+    IF              reduce using rule 17 (empty -> .)
+    WHILE           reduce using rule 17 (empty -> .)
+    FOR             reduce using rule 17 (empty -> .)
+    BREAK           reduce using rule 17 (empty -> .)
+    PRINT           reduce using rule 17 (empty -> .)
+    RETURN          reduce using rule 17 (empty -> .)
+    LBRACE          reduce using rule 17 (empty -> .)
+    NUMBER          reduce using rule 17 (empty -> .)
+    TRUE            reduce using rule 17 (empty -> .)
+    FALSE           reduce using rule 17 (empty -> .)
+    PAR_OPEN        reduce using rule 17 (empty -> .)
+    READ            reduce using rule 17 (empty -> .)
+    MINUS           reduce using rule 17 (empty -> .)
+    NOT             reduce using rule 17 (empty -> .)
+    VAR             shift and go to state 17
+
+    VarDecl                        shift and go to state 16
+    VarDecls                       shift and go to state 49
+    empty                          shift and go to state 15
+
+state 17
+
+    (20) VarDecl -> VAR . ID COLON Type SEMICOLON
+
+    ID              shift and go to state 50
+
+
+state 18
+
+    (5) FuncDecls -> Function FuncDecls .
+
+    VAR             reduce using rule 5 (FuncDecls -> Function FuncDecls .)
+    ID              reduce using rule 5 (FuncDecls -> Function FuncDecls .)
+    IF              reduce using rule 5 (FuncDecls -> Function FuncDecls .)
+    WHILE           reduce using rule 5 (FuncDecls -> Function FuncDecls .)
+    FOR             reduce using rule 5 (FuncDecls -> Function FuncDecls .)
+    BREAK           reduce using rule 5 (FuncDecls -> Function FuncDecls .)
+    PRINT           reduce using rule 5 (FuncDecls -> Function FuncDecls .)
+    RETURN          reduce using rule 5 (FuncDecls -> Function FuncDecls .)
+    LBRACE          reduce using rule 5 (FuncDecls -> Function FuncDecls .)
+    NUMBER          reduce using rule 5 (FuncDecls -> Function FuncDecls .)
+    TRUE            reduce using rule 5 (FuncDecls -> Function FuncDecls .)
+    FALSE           reduce using rule 5 (FuncDecls -> Function FuncDecls .)
+    PAR_OPEN        reduce using rule 5 (FuncDecls -> Function FuncDecls .)
+    READ            reduce using rule 5 (FuncDecls -> Function FuncDecls .)
+    MINUS           reduce using rule 5 (FuncDecls -> Function FuncDecls .)
+    NOT             reduce using rule 5 (FuncDecls -> Function FuncDecls .)
+
+
+state 19
+
+    (6) Function -> FunctionHeader FunctionBody .
+
+    INT             reduce using rule 6 (Function -> FunctionHeader FunctionBody .)
+    BOOL            reduce using rule 6 (Function -> FunctionHeader FunctionBody .)
+    VOID            reduce using rule 6 (Function -> FunctionHeader FunctionBody .)
+    VAR             reduce using rule 6 (Function -> FunctionHeader FunctionBody .)
+    ID              reduce using rule 6 (Function -> FunctionHeader FunctionBody .)
+    IF              reduce using rule 6 (Function -> FunctionHeader FunctionBody .)
+    WHILE           reduce using rule 6 (Function -> FunctionHeader FunctionBody .)
+    FOR             reduce using rule 6 (Function -> FunctionHeader FunctionBody .)
+    BREAK           reduce using rule 6 (Function -> FunctionHeader FunctionBody .)
+    PRINT           reduce using rule 6 (Function -> FunctionHeader FunctionBody .)
+    RETURN          reduce using rule 6 (Function -> FunctionHeader FunctionBody .)
+    LBRACE          reduce using rule 6 (Function -> FunctionHeader FunctionBody .)
+    NUMBER          reduce using rule 6 (Function -> FunctionHeader FunctionBody .)
+    TRUE            reduce using rule 6 (Function -> FunctionHeader FunctionBody .)
+    FALSE           reduce using rule 6 (Function -> FunctionHeader FunctionBody .)
+    PAR_OPEN        reduce using rule 6 (Function -> FunctionHeader FunctionBody .)
+    READ            reduce using rule 6 (Function -> FunctionHeader FunctionBody .)
+    MINUS           reduce using rule 6 (Function -> FunctionHeader FunctionBody .)
+    NOT             reduce using rule 6 (Function -> FunctionHeader FunctionBody .)
+
+
+state 20
+
+    (11) FunctionBody -> LBRACE . VarDecls CmdList RBRACE
+    (18) VarDecls -> . empty
+    (19) VarDecls -> . VarDecl VarDecls
+    (17) empty -> .
+    (20) VarDecl -> . VAR ID COLON Type SEMICOLON
+
+    ID              reduce using rule 17 (empty -> .)
+    IF              reduce using rule 17 (empty -> .)
+    WHILE           reduce using rule 17 (empty -> .)
+    FOR             reduce using rule 17 (empty -> .)
+    BREAK           reduce using rule 17 (empty -> .)
+    PRINT           reduce using rule 17 (empty -> .)
+    RETURN          reduce using rule 17 (empty -> .)
+    LBRACE          reduce using rule 17 (empty -> .)
+    NUMBER          reduce using rule 17 (empty -> .)
+    TRUE            reduce using rule 17 (empty -> .)
+    FALSE           reduce using rule 17 (empty -> .)
+    PAR_OPEN        reduce using rule 17 (empty -> .)
+    READ            reduce using rule 17 (empty -> .)
+    MINUS           reduce using rule 17 (empty -> .)
+    NOT             reduce using rule 17 (empty -> .)
+    VAR             shift and go to state 17
+
+    VarDecls                       shift and go to state 51
+    empty                          shift and go to state 15
+    VarDecl                        shift and go to state 16
+
+state 21
+
+    (7) FunctionHeader -> FunctionType FUNCTION . ID PAR_OPEN ParamList PAR_CLOSE COLON
+
+    ID              shift and go to state 52
+
+
+state 22
+
+    (2) ProgramHeader -> PROGRAM ID SEMICOLON .
+
+    INT             reduce using rule 2 (ProgramHeader -> PROGRAM ID SEMICOLON .)
+    BOOL            reduce using rule 2 (ProgramHeader -> PROGRAM ID SEMICOLON .)
+    VOID            reduce using rule 2 (ProgramHeader -> PROGRAM ID SEMICOLON .)
+    VAR             reduce using rule 2 (ProgramHeader -> PROGRAM ID SEMICOLON .)
+    ID              reduce using rule 2 (ProgramHeader -> PROGRAM ID SEMICOLON .)
+    IF              reduce using rule 2 (ProgramHeader -> PROGRAM ID SEMICOLON .)
+    WHILE           reduce using rule 2 (ProgramHeader -> PROGRAM ID SEMICOLON .)
+    FOR             reduce using rule 2 (ProgramHeader -> PROGRAM ID SEMICOLON .)
+    BREAK           reduce using rule 2 (ProgramHeader -> PROGRAM ID SEMICOLON .)
+    PRINT           reduce using rule 2 (ProgramHeader -> PROGRAM ID SEMICOLON .)
+    RETURN          reduce using rule 2 (ProgramHeader -> PROGRAM ID SEMICOLON .)
+    LBRACE          reduce using rule 2 (ProgramHeader -> PROGRAM ID SEMICOLON .)
+    NUMBER          reduce using rule 2 (ProgramHeader -> PROGRAM ID SEMICOLON .)
+    TRUE            reduce using rule 2 (ProgramHeader -> PROGRAM ID SEMICOLON .)
+    FALSE           reduce using rule 2 (ProgramHeader -> PROGRAM ID SEMICOLON .)
+    PAR_OPEN        reduce using rule 2 (ProgramHeader -> PROGRAM ID SEMICOLON .)
+    READ            reduce using rule 2 (ProgramHeader -> PROGRAM ID SEMICOLON .)
+    MINUS           reduce using rule 2 (ProgramHeader -> PROGRAM ID SEMICOLON .)
+    NOT             reduce using rule 2 (ProgramHeader -> PROGRAM ID SEMICOLON .)
+
+
+state 23
+
+    (3) ProgramBody -> FuncDecls VarDecls Cmd .
+
+    $end            reduce using rule 3 (ProgramBody -> FuncDecls VarDecls Cmd .)
+
+
+state 24
+
+    (51) Cmd -> CmdAtrib .
+
+    $end            reduce using rule 51 (Cmd -> CmdAtrib .)
+    SEMICOLON       reduce using rule 51 (Cmd -> CmdAtrib .)
+    RBRACE          reduce using rule 51 (Cmd -> CmdAtrib .)
+    ELSE            reduce using rule 51 (Cmd -> CmdAtrib .)
+
+
+state 25
+
+    (52) Cmd -> CmdIf .
+
+    $end            reduce using rule 52 (Cmd -> CmdIf .)
+    SEMICOLON       reduce using rule 52 (Cmd -> CmdIf .)
+    RBRACE          reduce using rule 52 (Cmd -> CmdIf .)
+    ELSE            reduce using rule 52 (Cmd -> CmdIf .)
+
+
+state 26
+
+    (53) Cmd -> CmdWhile .
+
+    $end            reduce using rule 53 (Cmd -> CmdWhile .)
+    SEMICOLON       reduce using rule 53 (Cmd -> CmdWhile .)
+    RBRACE          reduce using rule 53 (Cmd -> CmdWhile .)
+    ELSE            reduce using rule 53 (Cmd -> CmdWhile .)
+
+
+state 27
+
+    (54) Cmd -> CmdFor .
+
+    $end            reduce using rule 54 (Cmd -> CmdFor .)
+    SEMICOLON       reduce using rule 54 (Cmd -> CmdFor .)
+    RBRACE          reduce using rule 54 (Cmd -> CmdFor .)
+    ELSE            reduce using rule 54 (Cmd -> CmdFor .)
+
+
+state 28
+
+    (55) Cmd -> CmdBreak .
+
+    $end            reduce using rule 55 (Cmd -> CmdBreak .)
+    SEMICOLON       reduce using rule 55 (Cmd -> CmdBreak .)
+    RBRACE          reduce using rule 55 (Cmd -> CmdBreak .)
+    ELSE            reduce using rule 55 (Cmd -> CmdBreak .)
+
+
+state 29
+
+    (56) Cmd -> CmdPrint .
+
+    $end            reduce using rule 56 (Cmd -> CmdPrint .)
+    SEMICOLON       reduce using rule 56 (Cmd -> CmdPrint .)
+    RBRACE          reduce using rule 56 (Cmd -> CmdPrint .)
+    ELSE            reduce using rule 56 (Cmd -> CmdPrint .)
+
+
+state 30
+
+    (57) Cmd -> CmdReturn .
+
+    $end            reduce using rule 57 (Cmd -> CmdReturn .)
+    SEMICOLON       reduce using rule 57 (Cmd -> CmdReturn .)
+    RBRACE          reduce using rule 57 (Cmd -> CmdReturn .)
+    ELSE            reduce using rule 57 (Cmd -> CmdReturn .)
+
+
+state 31
+
+    (58) Cmd -> CmdSeq .
+
+    $end            reduce using rule 58 (Cmd -> CmdSeq .)
+    SEMICOLON       reduce using rule 58 (Cmd -> CmdSeq .)
+    RBRACE          reduce using rule 58 (Cmd -> CmdSeq .)
+    ELSE            reduce using rule 58 (Cmd -> CmdSeq .)
+
+
+state 32
+
+    (59) CmdAtrib -> ID .
+    (61) CmdAtrib -> ID . ASSIGN Expr
+    (26) Expr -> ID .
+    (30) Expr -> ID . PAR_OPEN ExprList PAR_CLOSE
+
+  ! reduce/reduce conflict for $end resolved using rule 26 (Expr -> ID .)
+  ! reduce/reduce conflict for TO resolved using rule 26 (Expr -> ID .)
+  ! reduce/reduce conflict for SEMICOLON resolved using rule 26 (Expr -> ID .)
+  ! reduce/reduce conflict for RBRACE resolved using rule 26 (Expr -> ID .)
+  ! reduce/reduce conflict for ELSE resolved using rule 26 (Expr -> ID .)
+    ASSIGN          shift and go to state 53
+    PLUS            reduce using rule 26 (Expr -> ID .)
+    MINUS           reduce using rule 26 (Expr -> ID .)
+    TIMES           reduce using rule 26 (Expr -> ID .)
+    EXPO            reduce using rule 26 (Expr -> ID .)
+    MOD             reduce using rule 26 (Expr -> ID .)
+    DIF             reduce using rule 26 (Expr -> ID .)
+    EQUALS          reduce using rule 26 (Expr -> ID .)
+    LESS            reduce using rule 26 (Expr -> ID .)
+    GREATER         reduce using rule 26 (Expr -> ID .)
+    LESS_EQUAL      reduce using rule 26 (Expr -> ID .)
+    GREATER_EQUAL   reduce using rule 26 (Expr -> ID .)
+    AND             reduce using rule 26 (Expr -> ID .)
+    OR              reduce using rule 26 (Expr -> ID .)
+    $end            reduce using rule 26 (Expr -> ID .)
+    TO              reduce using rule 26 (Expr -> ID .)
+    SEMICOLON       reduce using rule 26 (Expr -> ID .)
+    RBRACE          reduce using rule 26 (Expr -> ID .)
+    ELSE            reduce using rule 26 (Expr -> ID .)
+    PAR_OPEN        shift and go to state 54
+
+  ! $end            [ reduce using rule 59 (CmdAtrib -> ID .) ]
+  ! TO              [ reduce using rule 59 (CmdAtrib -> ID .) ]
+  ! SEMICOLON       [ reduce using rule 59 (CmdAtrib -> ID .) ]
+  ! RBRACE          [ reduce using rule 59 (CmdAtrib -> ID .) ]
+  ! ELSE            [ reduce using rule 59 (CmdAtrib -> ID .) ]
+
+
+state 33
+
+    (60) CmdAtrib -> Expr .
+    (27) Expr -> Expr . BinOp Expr
+    (32) BinOp -> . PLUS
+    (33) BinOp -> . MINUS
+    (34) BinOp -> . TIMES
+    (35) BinOp -> . EXPO
+    (36) BinOp -> . MOD
+    (37) BinOp -> . DIF
+    (38) BinOp -> . EQUALS
+    (39) BinOp -> . LESS
+    (40) BinOp -> . GREATER
+    (41) BinOp -> . LESS_EQUAL
+    (42) BinOp -> . GREATER_EQUAL
+    (43) BinOp -> . AND
+    (44) BinOp -> . OR
+
+    $end            reduce using rule 60 (CmdAtrib -> Expr .)
+    TO              reduce using rule 60 (CmdAtrib -> Expr .)
+    SEMICOLON       reduce using rule 60 (CmdAtrib -> Expr .)
+    RBRACE          reduce using rule 60 (CmdAtrib -> Expr .)
+    ELSE            reduce using rule 60 (CmdAtrib -> Expr .)
+    PLUS            shift and go to state 56
+    MINUS           shift and go to state 57
+    TIMES           shift and go to state 58
+    EXPO            shift and go to state 59
+    MOD             shift and go to state 60
+    DIF             shift and go to state 61
+    EQUALS          shift and go to state 62
+    LESS            shift and go to state 63
+    GREATER         shift and go to state 64
+    LESS_EQUAL      shift and go to state 65
+    GREATER_EQUAL   shift and go to state 66
+    AND             shift and go to state 67
+    OR              shift and go to state 68
+
+    BinOp                          shift and go to state 55
+
+state 34
+
+    (62) CmdIf -> IF . Expr COLON Cmd
+    (63) CmdIf -> IF . Expr COLON Cmd ELSE COLON
+    (23) Expr -> . NUMBER
+    (24) Expr -> . TRUE
+    (25) Expr -> . FALSE
+    (26) Expr -> . ID
+    (27) Expr -> . Expr BinOp Expr
+    (28) Expr -> . UnOp Expr
+    (29) Expr -> . PAR_OPEN Expr PAR_CLOSE
+    (30) Expr -> . ID PAR_OPEN ExprList PAR_CLOSE
+    (31) Expr -> . READ PAR_OPEN PAR_CLOSE
+    (45) UnOp -> . MINUS
+    (46) UnOp -> . NOT
+
+    NUMBER          shift and go to state 42
+    TRUE            shift and go to state 43
+    FALSE           shift and go to state 44
+    ID              shift and go to state 70
+    PAR_OPEN        shift and go to state 39
+    READ            shift and go to state 46
+    MINUS           shift and go to state 47
+    NOT             shift and go to state 48
+
+    Expr                           shift and go to state 69
+    UnOp                           shift and go to state 45
+
+state 35
+
+    (64) CmdWhile -> WHILE . Expr COLON Cmd
+    (23) Expr -> . NUMBER
+    (24) Expr -> . TRUE
+    (25) Expr -> . FALSE
+    (26) Expr -> . ID
+    (27) Expr -> . Expr BinOp Expr
+    (28) Expr -> . UnOp Expr
+    (29) Expr -> . PAR_OPEN Expr PAR_CLOSE
+    (30) Expr -> . ID PAR_OPEN ExprList PAR_CLOSE
+    (31) Expr -> . READ PAR_OPEN PAR_CLOSE
+    (45) UnOp -> . MINUS
+    (46) UnOp -> . NOT
+
+    NUMBER          shift and go to state 42
+    TRUE            shift and go to state 43
+    FALSE           shift and go to state 44
+    ID              shift and go to state 70
+    PAR_OPEN        shift and go to state 39
+    READ            shift and go to state 46
+    MINUS           shift and go to state 47
+    NOT             shift and go to state 48
+
+    Expr                           shift and go to state 71
+    UnOp                           shift and go to state 45
+
+state 36
+
+    (65) CmdFor -> FOR . CmdAtrib TO Expr COLON Cmd
+    (59) CmdAtrib -> . ID
+    (60) CmdAtrib -> . Expr
+    (61) CmdAtrib -> . ID ASSIGN Expr
+    (23) Expr -> . NUMBER
+    (24) Expr -> . TRUE
+    (25) Expr -> . FALSE
+    (26) Expr -> . ID
+    (27) Expr -> . Expr BinOp Expr
+    (28) Expr -> . UnOp Expr
+    (29) Expr -> . PAR_OPEN Expr PAR_CLOSE
+    (30) Expr -> . ID PAR_OPEN ExprList PAR_CLOSE
+    (31) Expr -> . READ PAR_OPEN PAR_CLOSE
+    (45) UnOp -> . MINUS
+    (46) UnOp -> . NOT
+
+    ID              shift and go to state 32
+    NUMBER          shift and go to state 42
+    TRUE            shift and go to state 43
+    FALSE           shift and go to state 44
+    PAR_OPEN        shift and go to state 39
+    READ            shift and go to state 46
+    MINUS           shift and go to state 47
+    NOT             shift and go to state 48
+
+    CmdAtrib                       shift and go to state 72
+    Expr                           shift and go to state 33
+    UnOp                           shift and go to state 45
+
+state 37
+
+    (66) CmdBreak -> BREAK .
+
+    $end            reduce using rule 66 (CmdBreak -> BREAK .)
+    SEMICOLON       reduce using rule 66 (CmdBreak -> BREAK .)
+    RBRACE          reduce using rule 66 (CmdBreak -> BREAK .)
+    ELSE            reduce using rule 66 (CmdBreak -> BREAK .)
+
+
+state 38
+
+    (67) CmdPrint -> PRINT . PAR_OPEN ExprList PAR_CLOSE
+
+    PAR_OPEN        shift and go to state 73
+
+
+state 39
+
+    (29) Expr -> PAR_OPEN . Expr PAR_CLOSE
+    (23) Expr -> . NUMBER
+    (24) Expr -> . TRUE
+    (25) Expr -> . FALSE
+    (26) Expr -> . ID
+    (27) Expr -> . Expr BinOp Expr
+    (28) Expr -> . UnOp Expr
+    (29) Expr -> . PAR_OPEN Expr PAR_CLOSE
+    (30) Expr -> . ID PAR_OPEN ExprList PAR_CLOSE
+    (31) Expr -> . READ PAR_OPEN PAR_CLOSE
+    (45) UnOp -> . MINUS
+    (46) UnOp -> . NOT
+
+    NUMBER          shift and go to state 42
+    TRUE            shift and go to state 43
+    FALSE           shift and go to state 44
+    ID              shift and go to state 70
+    PAR_OPEN        shift and go to state 39
+    READ            shift and go to state 46
+    MINUS           shift and go to state 47
+    NOT             shift and go to state 48
+
+    Expr                           shift and go to state 74
+    UnOp                           shift and go to state 45
+
+state 40
+
+    (68) CmdReturn -> RETURN . Expr
+    (23) Expr -> . NUMBER
+    (24) Expr -> . TRUE
+    (25) Expr -> . FALSE
+    (26) Expr -> . ID
+    (27) Expr -> . Expr BinOp Expr
+    (28) Expr -> . UnOp Expr
+    (29) Expr -> . PAR_OPEN Expr PAR_CLOSE
+    (30) Expr -> . ID PAR_OPEN ExprList PAR_CLOSE
+    (31) Expr -> . READ PAR_OPEN PAR_CLOSE
+    (45) UnOp -> . MINUS
+    (46) UnOp -> . NOT
+
+    NUMBER          shift and go to state 42
+    TRUE            shift and go to state 43
+    FALSE           shift and go to state 44
+    ID              shift and go to state 70
+    PAR_OPEN        shift and go to state 39
+    READ            shift and go to state 46
+    MINUS           shift and go to state 47
+    NOT             shift and go to state 48
+
+    Expr                           shift and go to state 75
+    UnOp                           shift and go to state 45
+
+state 41
+
+    (69) CmdSeq -> LBRACE . CmdList RBRACE
+    (70) CmdList -> . Cmd SEMICOLON CmdList
+    (71) CmdList -> . Cmd
+    (51) Cmd -> . CmdAtrib
+    (52) Cmd -> . CmdIf
+    (53) Cmd -> . CmdWhile
+    (54) Cmd -> . CmdFor
+    (55) Cmd -> . CmdBreak
+    (56) Cmd -> . CmdPrint
+    (57) Cmd -> . CmdReturn
+    (58) Cmd -> . CmdSeq
+    (59) CmdAtrib -> . ID
+    (60) CmdAtrib -> . Expr
+    (61) CmdAtrib -> . ID ASSIGN Expr
+    (62) CmdIf -> . IF Expr COLON Cmd
+    (63) CmdIf -> . IF Expr COLON Cmd ELSE COLON
+    (64) CmdWhile -> . WHILE Expr COLON Cmd
+    (65) CmdFor -> . FOR CmdAtrib TO Expr COLON Cmd
+    (66) CmdBreak -> . BREAK
+    (67) CmdPrint -> . PRINT PAR_OPEN ExprList PAR_CLOSE
+    (68) CmdReturn -> . RETURN Expr
+    (69) CmdSeq -> . LBRACE CmdList RBRACE
+    (23) Expr -> . NUMBER
+    (24) Expr -> . TRUE
+    (25) Expr -> . FALSE
+    (26) Expr -> . ID
+    (27) Expr -> . Expr BinOp Expr
+    (28) Expr -> . UnOp Expr
+    (29) Expr -> . PAR_OPEN Expr PAR_CLOSE
+    (30) Expr -> . ID PAR_OPEN ExprList PAR_CLOSE
+    (31) Expr -> . READ PAR_OPEN PAR_CLOSE
+    (45) UnOp -> . MINUS
+    (46) UnOp -> . NOT
+
+    ID              shift and go to state 32
+    IF              shift and go to state 34
+    WHILE           shift and go to state 35
+    FOR             shift and go to state 36
+    BREAK           shift and go to state 37
+    PRINT           shift and go to state 38
+    RETURN          shift and go to state 40
+    LBRACE          shift and go to state 41
+    NUMBER          shift and go to state 42
+    TRUE            shift and go to state 43
+    FALSE           shift and go to state 44
+    PAR_OPEN        shift and go to state 39
+    READ            shift and go to state 46
+    MINUS           shift and go to state 47
+    NOT             shift and go to state 48
+
+    CmdList                        shift and go to state 76
+    Cmd                            shift and go to state 77
+    CmdAtrib                       shift and go to state 24
+    CmdIf                          shift and go to state 25
+    CmdWhile                       shift and go to state 26
+    CmdFor                         shift and go to state 27
+    CmdBreak                       shift and go to state 28
+    CmdPrint                       shift and go to state 29
+    CmdReturn                      shift and go to state 30
+    CmdSeq                         shift and go to state 31
+    Expr                           shift and go to state 33
+    UnOp                           shift and go to state 45
+
+state 42
+
+    (23) Expr -> NUMBER .
+
+    PLUS            reduce using rule 23 (Expr -> NUMBER .)
+    MINUS           reduce using rule 23 (Expr -> NUMBER .)
+    TIMES           reduce using rule 23 (Expr -> NUMBER .)
+    EXPO            reduce using rule 23 (Expr -> NUMBER .)
+    MOD             reduce using rule 23 (Expr -> NUMBER .)
+    DIF             reduce using rule 23 (Expr -> NUMBER .)
+    EQUALS          reduce using rule 23 (Expr -> NUMBER .)
+    LESS            reduce using rule 23 (Expr -> NUMBER .)
+    GREATER         reduce using rule 23 (Expr -> NUMBER .)
+    LESS_EQUAL      reduce using rule 23 (Expr -> NUMBER .)
+    GREATER_EQUAL   reduce using rule 23 (Expr -> NUMBER .)
+    AND             reduce using rule 23 (Expr -> NUMBER .)
+    OR              reduce using rule 23 (Expr -> NUMBER .)
+    $end            reduce using rule 23 (Expr -> NUMBER .)
+    COLON           reduce using rule 23 (Expr -> NUMBER .)
+    TO              reduce using rule 23 (Expr -> NUMBER .)
+    PAR_CLOSE       reduce using rule 23 (Expr -> NUMBER .)
+    SEMICOLON       reduce using rule 23 (Expr -> NUMBER .)
+    RBRACE          reduce using rule 23 (Expr -> NUMBER .)
+    ELSE            reduce using rule 23 (Expr -> NUMBER .)
+    COMMA           reduce using rule 23 (Expr -> NUMBER .)
+
+
+state 43
+
+    (24) Expr -> TRUE .
+
+    PLUS            reduce using rule 24 (Expr -> TRUE .)
+    MINUS           reduce using rule 24 (Expr -> TRUE .)
+    TIMES           reduce using rule 24 (Expr -> TRUE .)
+    EXPO            reduce using rule 24 (Expr -> TRUE .)
+    MOD             reduce using rule 24 (Expr -> TRUE .)
+    DIF             reduce using rule 24 (Expr -> TRUE .)
+    EQUALS          reduce using rule 24 (Expr -> TRUE .)
+    LESS            reduce using rule 24 (Expr -> TRUE .)
+    GREATER         reduce using rule 24 (Expr -> TRUE .)
+    LESS_EQUAL      reduce using rule 24 (Expr -> TRUE .)
+    GREATER_EQUAL   reduce using rule 24 (Expr -> TRUE .)
+    AND             reduce using rule 24 (Expr -> TRUE .)
+    OR              reduce using rule 24 (Expr -> TRUE .)
+    $end            reduce using rule 24 (Expr -> TRUE .)
+    COLON           reduce using rule 24 (Expr -> TRUE .)
+    TO              reduce using rule 24 (Expr -> TRUE .)
+    PAR_CLOSE       reduce using rule 24 (Expr -> TRUE .)
+    SEMICOLON       reduce using rule 24 (Expr -> TRUE .)
+    RBRACE          reduce using rule 24 (Expr -> TRUE .)
+    ELSE            reduce using rule 24 (Expr -> TRUE .)
+    COMMA           reduce using rule 24 (Expr -> TRUE .)
+
+
+state 44
+
+    (25) Expr -> FALSE .
+
+    PLUS            reduce using rule 25 (Expr -> FALSE .)
+    MINUS           reduce using rule 25 (Expr -> FALSE .)
+    TIMES           reduce using rule 25 (Expr -> FALSE .)
+    EXPO            reduce using rule 25 (Expr -> FALSE .)
+    MOD             reduce using rule 25 (Expr -> FALSE .)
+    DIF             reduce using rule 25 (Expr -> FALSE .)
+    EQUALS          reduce using rule 25 (Expr -> FALSE .)
+    LESS            reduce using rule 25 (Expr -> FALSE .)
+    GREATER         reduce using rule 25 (Expr -> FALSE .)
+    LESS_EQUAL      reduce using rule 25 (Expr -> FALSE .)
+    GREATER_EQUAL   reduce using rule 25 (Expr -> FALSE .)
+    AND             reduce using rule 25 (Expr -> FALSE .)
+    OR              reduce using rule 25 (Expr -> FALSE .)
+    $end            reduce using rule 25 (Expr -> FALSE .)
+    COLON           reduce using rule 25 (Expr -> FALSE .)
+    TO              reduce using rule 25 (Expr -> FALSE .)
+    PAR_CLOSE       reduce using rule 25 (Expr -> FALSE .)
+    SEMICOLON       reduce using rule 25 (Expr -> FALSE .)
+    RBRACE          reduce using rule 25 (Expr -> FALSE .)
+    ELSE            reduce using rule 25 (Expr -> FALSE .)
+    COMMA           reduce using rule 25 (Expr -> FALSE .)
+
+
+state 45
+
+    (28) Expr -> UnOp . Expr
+    (23) Expr -> . NUMBER
+    (24) Expr -> . TRUE
+    (25) Expr -> . FALSE
+    (26) Expr -> . ID
+    (27) Expr -> . Expr BinOp Expr
+    (28) Expr -> . UnOp Expr
+    (29) Expr -> . PAR_OPEN Expr PAR_CLOSE
+    (30) Expr -> . ID PAR_OPEN ExprList PAR_CLOSE
+    (31) Expr -> . READ PAR_OPEN PAR_CLOSE
+    (45) UnOp -> . MINUS
+    (46) UnOp -> . NOT
+
+    NUMBER          shift and go to state 42
+    TRUE            shift and go to state 43
+    FALSE           shift and go to state 44
+    ID              shift and go to state 70
+    PAR_OPEN        shift and go to state 39
+    READ            shift and go to state 46
+    MINUS           shift and go to state 47
+    NOT             shift and go to state 48
+
+    UnOp                           shift and go to state 45
+    Expr                           shift and go to state 78
+
+state 46
+
+    (31) Expr -> READ . PAR_OPEN PAR_CLOSE
+
+    PAR_OPEN        shift and go to state 79
+
+
+state 47
+
+    (45) UnOp -> MINUS .
+
+    NUMBER          reduce using rule 45 (UnOp -> MINUS .)
+    TRUE            reduce using rule 45 (UnOp -> MINUS .)
+    FALSE           reduce using rule 45 (UnOp -> MINUS .)
+    ID              reduce using rule 45 (UnOp -> MINUS .)
+    PAR_OPEN        reduce using rule 45 (UnOp -> MINUS .)
+    READ            reduce using rule 45 (UnOp -> MINUS .)
+    MINUS           reduce using rule 45 (UnOp -> MINUS .)
+    NOT             reduce using rule 45 (UnOp -> MINUS .)
+
+
+state 48
+
+    (46) UnOp -> NOT .
+
+    NUMBER          reduce using rule 46 (UnOp -> NOT .)
+    TRUE            reduce using rule 46 (UnOp -> NOT .)
+    FALSE           reduce using rule 46 (UnOp -> NOT .)
+    ID              reduce using rule 46 (UnOp -> NOT .)
+    PAR_OPEN        reduce using rule 46 (UnOp -> NOT .)
+    READ            reduce using rule 46 (UnOp -> NOT .)
+    MINUS           reduce using rule 46 (UnOp -> NOT .)
+    NOT             reduce using rule 46 (UnOp -> NOT .)
+
+
+state 49
+
+    (19) VarDecls -> VarDecl VarDecls .
+
+    ID              reduce using rule 19 (VarDecls -> VarDecl VarDecls .)
+    IF              reduce using rule 19 (VarDecls -> VarDecl VarDecls .)
+    WHILE           reduce using rule 19 (VarDecls -> VarDecl VarDecls .)
+    FOR             reduce using rule 19 (VarDecls -> VarDecl VarDecls .)
+    BREAK           reduce using rule 19 (VarDecls -> VarDecl VarDecls .)
+    PRINT           reduce using rule 19 (VarDecls -> VarDecl VarDecls .)
+    RETURN          reduce using rule 19 (VarDecls -> VarDecl VarDecls .)
+    LBRACE          reduce using rule 19 (VarDecls -> VarDecl VarDecls .)
+    NUMBER          reduce using rule 19 (VarDecls -> VarDecl VarDecls .)
+    TRUE            reduce using rule 19 (VarDecls -> VarDecl VarDecls .)
+    FALSE           reduce using rule 19 (VarDecls -> VarDecl VarDecls .)
+    PAR_OPEN        reduce using rule 19 (VarDecls -> VarDecl VarDecls .)
+    READ            reduce using rule 19 (VarDecls -> VarDecl VarDecls .)
+    MINUS           reduce using rule 19 (VarDecls -> VarDecl VarDecls .)
+    NOT             reduce using rule 19 (VarDecls -> VarDecl VarDecls .)
+
+
+state 50
+
+    (20) VarDecl -> VAR ID . COLON Type SEMICOLON
+
+    COLON           shift and go to state 80
+
+
+state 51
+
+    (11) FunctionBody -> LBRACE VarDecls . CmdList RBRACE
+    (70) CmdList -> . Cmd SEMICOLON CmdList
+    (71) CmdList -> . Cmd
+    (51) Cmd -> . CmdAtrib
+    (52) Cmd -> . CmdIf
+    (53) Cmd -> . CmdWhile
+    (54) Cmd -> . CmdFor
+    (55) Cmd -> . CmdBreak
+    (56) Cmd -> . CmdPrint
+    (57) Cmd -> . CmdReturn
+    (58) Cmd -> . CmdSeq
+    (59) CmdAtrib -> . ID
+    (60) CmdAtrib -> . Expr
+    (61) CmdAtrib -> . ID ASSIGN Expr
+    (62) CmdIf -> . IF Expr COLON Cmd
+    (63) CmdIf -> . IF Expr COLON Cmd ELSE COLON
+    (64) CmdWhile -> . WHILE Expr COLON Cmd
+    (65) CmdFor -> . FOR CmdAtrib TO Expr COLON Cmd
+    (66) CmdBreak -> . BREAK
+    (67) CmdPrint -> . PRINT PAR_OPEN ExprList PAR_CLOSE
+    (68) CmdReturn -> . RETURN Expr
+    (69) CmdSeq -> . LBRACE CmdList RBRACE
+    (23) Expr -> . NUMBER
+    (24) Expr -> . TRUE
+    (25) Expr -> . FALSE
+    (26) Expr -> . ID
+    (27) Expr -> . Expr BinOp Expr
+    (28) Expr -> . UnOp Expr
+    (29) Expr -> . PAR_OPEN Expr PAR_CLOSE
+    (30) Expr -> . ID PAR_OPEN ExprList PAR_CLOSE
+    (31) Expr -> . READ PAR_OPEN PAR_CLOSE
+    (45) UnOp -> . MINUS
+    (46) UnOp -> . NOT
+
+    ID              shift and go to state 32
+    IF              shift and go to state 34
+    WHILE           shift and go to state 35
+    FOR             shift and go to state 36
+    BREAK           shift and go to state 37
+    PRINT           shift and go to state 38
+    RETURN          shift and go to state 40
+    LBRACE          shift and go to state 41
+    NUMBER          shift and go to state 42
+    TRUE            shift and go to state 43
+    FALSE           shift and go to state 44
+    PAR_OPEN        shift and go to state 39
+    READ            shift and go to state 46
+    MINUS           shift and go to state 47
+    NOT             shift and go to state 48
+
+    CmdList                        shift and go to state 81
+    Cmd                            shift and go to state 77
+    CmdAtrib                       shift and go to state 24
+    CmdIf                          shift and go to state 25
+    CmdWhile                       shift and go to state 26
+    CmdFor                         shift and go to state 27
+    CmdBreak                       shift and go to state 28
+    CmdPrint                       shift and go to state 29
+    CmdReturn                      shift and go to state 30
+    CmdSeq                         shift and go to state 31
+    Expr                           shift and go to state 33
+    UnOp                           shift and go to state 45
+
+state 52
+
+    (7) FunctionHeader -> FunctionType FUNCTION ID . PAR_OPEN ParamList PAR_CLOSE COLON
+
+    PAR_OPEN        shift and go to state 82
+
+
+state 53
+
+    (61) CmdAtrib -> ID ASSIGN . Expr
+    (23) Expr -> . NUMBER
+    (24) Expr -> . TRUE
+    (25) Expr -> . FALSE
+    (26) Expr -> . ID
+    (27) Expr -> . Expr BinOp Expr
+    (28) Expr -> . UnOp Expr
+    (29) Expr -> . PAR_OPEN Expr PAR_CLOSE
+    (30) Expr -> . ID PAR_OPEN ExprList PAR_CLOSE
+    (31) Expr -> . READ PAR_OPEN PAR_CLOSE
+    (45) UnOp -> . MINUS
+    (46) UnOp -> . NOT
+
+    NUMBER          shift and go to state 42
+    TRUE            shift and go to state 43
+    FALSE           shift and go to state 44
+    ID              shift and go to state 70
+    PAR_OPEN        shift and go to state 39
+    READ            shift and go to state 46
+    MINUS           shift and go to state 47
+    NOT             shift and go to state 48
+
+    Expr                           shift and go to state 83
+    UnOp                           shift and go to state 45
+
+state 54
+
+    (30) Expr -> ID PAR_OPEN . ExprList PAR_CLOSE
+    (47) ExprList -> . empty
+    (48) ExprList -> . ExprList1
+    (17) empty -> .
+    (49) ExprList1 -> . Expr
+    (50) ExprList1 -> . Expr COMMA ExprList1
+    (23) Expr -> . NUMBER
+    (24) Expr -> . TRUE
+    (25) Expr -> . FALSE
+    (26) Expr -> . ID
+    (27) Expr -> . Expr BinOp Expr
+    (28) Expr -> . UnOp Expr
+    (29) Expr -> . PAR_OPEN Expr PAR_CLOSE
+    (30) Expr -> . ID PAR_OPEN ExprList PAR_CLOSE
+    (31) Expr -> . READ PAR_OPEN PAR_CLOSE
+    (45) UnOp -> . MINUS
+    (46) UnOp -> . NOT
+
+    PAR_CLOSE       reduce using rule 17 (empty -> .)
+    NUMBER          shift and go to state 42
+    TRUE            shift and go to state 43
+    FALSE           shift and go to state 44
+    ID              shift and go to state 70
+    PAR_OPEN        shift and go to state 39
+    READ            shift and go to state 46
+    MINUS           shift and go to state 47
+    NOT             shift and go to state 48
+
+    ExprList                       shift and go to state 84
+    empty                          shift and go to state 85
+    ExprList1                      shift and go to state 86
+    Expr                           shift and go to state 87
+    UnOp                           shift and go to state 45
+
+state 55
+
+    (27) Expr -> Expr BinOp . Expr
+    (23) Expr -> . NUMBER
+    (24) Expr -> . TRUE
+    (25) Expr -> . FALSE
+    (26) Expr -> . ID
+    (27) Expr -> . Expr BinOp Expr
+    (28) Expr -> . UnOp Expr
+    (29) Expr -> . PAR_OPEN Expr PAR_CLOSE
+    (30) Expr -> . ID PAR_OPEN ExprList PAR_CLOSE
+    (31) Expr -> . READ PAR_OPEN PAR_CLOSE
+    (45) UnOp -> . MINUS
+    (46) UnOp -> . NOT
+
+    NUMBER          shift and go to state 42
+    TRUE            shift and go to state 43
+    FALSE           shift and go to state 44
+    ID              shift and go to state 70
+    PAR_OPEN        shift and go to state 39
+    READ            shift and go to state 46
+    MINUS           shift and go to state 47
+    NOT             shift and go to state 48
+
+    Expr                           shift and go to state 88
+    UnOp                           shift and go to state 45
+
+state 56
+
+    (32) BinOp -> PLUS .
+
+    NUMBER          reduce using rule 32 (BinOp -> PLUS .)
+    TRUE            reduce using rule 32 (BinOp -> PLUS .)
+    FALSE           reduce using rule 32 (BinOp -> PLUS .)
+    ID              reduce using rule 32 (BinOp -> PLUS .)
+    PAR_OPEN        reduce using rule 32 (BinOp -> PLUS .)
+    READ            reduce using rule 32 (BinOp -> PLUS .)
+    MINUS           reduce using rule 32 (BinOp -> PLUS .)
+    NOT             reduce using rule 32 (BinOp -> PLUS .)
+
+
+state 57
+
+    (33) BinOp -> MINUS .
+
+    NUMBER          reduce using rule 33 (BinOp -> MINUS .)
+    TRUE            reduce using rule 33 (BinOp -> MINUS .)
+    FALSE           reduce using rule 33 (BinOp -> MINUS .)
+    ID              reduce using rule 33 (BinOp -> MINUS .)
+    PAR_OPEN        reduce using rule 33 (BinOp -> MINUS .)
+    READ            reduce using rule 33 (BinOp -> MINUS .)
+    MINUS           reduce using rule 33 (BinOp -> MINUS .)
+    NOT             reduce using rule 33 (BinOp -> MINUS .)
+
+
+state 58
+
+    (34) BinOp -> TIMES .
+
+    NUMBER          reduce using rule 34 (BinOp -> TIMES .)
+    TRUE            reduce using rule 34 (BinOp -> TIMES .)
+    FALSE           reduce using rule 34 (BinOp -> TIMES .)
+    ID              reduce using rule 34 (BinOp -> TIMES .)
+    PAR_OPEN        reduce using rule 34 (BinOp -> TIMES .)
+    READ            reduce using rule 34 (BinOp -> TIMES .)
+    MINUS           reduce using rule 34 (BinOp -> TIMES .)
+    NOT             reduce using rule 34 (BinOp -> TIMES .)
+
+
+state 59
+
+    (35) BinOp -> EXPO .
+
+    NUMBER          reduce using rule 35 (BinOp -> EXPO .)
+    TRUE            reduce using rule 35 (BinOp -> EXPO .)
+    FALSE           reduce using rule 35 (BinOp -> EXPO .)
+    ID              reduce using rule 35 (BinOp -> EXPO .)
+    PAR_OPEN        reduce using rule 35 (BinOp -> EXPO .)
+    READ            reduce using rule 35 (BinOp -> EXPO .)
+    MINUS           reduce using rule 35 (BinOp -> EXPO .)
+    NOT             reduce using rule 35 (BinOp -> EXPO .)
+
+
+state 60
+
+    (36) BinOp -> MOD .
+
+    NUMBER          reduce using rule 36 (BinOp -> MOD .)
+    TRUE            reduce using rule 36 (BinOp -> MOD .)
+    FALSE           reduce using rule 36 (BinOp -> MOD .)
+    ID              reduce using rule 36 (BinOp -> MOD .)
+    PAR_OPEN        reduce using rule 36 (BinOp -> MOD .)
+    READ            reduce using rule 36 (BinOp -> MOD .)
+    MINUS           reduce using rule 36 (BinOp -> MOD .)
+    NOT             reduce using rule 36 (BinOp -> MOD .)
+
+
+state 61
+
+    (37) BinOp -> DIF .
+
+    NUMBER          reduce using rule 37 (BinOp -> DIF .)
+    TRUE            reduce using rule 37 (BinOp -> DIF .)
+    FALSE           reduce using rule 37 (BinOp -> DIF .)
+    ID              reduce using rule 37 (BinOp -> DIF .)
+    PAR_OPEN        reduce using rule 37 (BinOp -> DIF .)
+    READ            reduce using rule 37 (BinOp -> DIF .)
+    MINUS           reduce using rule 37 (BinOp -> DIF .)
+    NOT             reduce using rule 37 (BinOp -> DIF .)
+
+
+state 62
+
+    (38) BinOp -> EQUALS .
+
+    NUMBER          reduce using rule 38 (BinOp -> EQUALS .)
+    TRUE            reduce using rule 38 (BinOp -> EQUALS .)
+    FALSE           reduce using rule 38 (BinOp -> EQUALS .)
+    ID              reduce using rule 38 (BinOp -> EQUALS .)
+    PAR_OPEN        reduce using rule 38 (BinOp -> EQUALS .)
+    READ            reduce using rule 38 (BinOp -> EQUALS .)
+    MINUS           reduce using rule 38 (BinOp -> EQUALS .)
+    NOT             reduce using rule 38 (BinOp -> EQUALS .)
+
+
+state 63
+
+    (39) BinOp -> LESS .
+
+    NUMBER          reduce using rule 39 (BinOp -> LESS .)
+    TRUE            reduce using rule 39 (BinOp -> LESS .)
+    FALSE           reduce using rule 39 (BinOp -> LESS .)
+    ID              reduce using rule 39 (BinOp -> LESS .)
+    PAR_OPEN        reduce using rule 39 (BinOp -> LESS .)
+    READ            reduce using rule 39 (BinOp -> LESS .)
+    MINUS           reduce using rule 39 (BinOp -> LESS .)
+    NOT             reduce using rule 39 (BinOp -> LESS .)
+
+
+state 64
+
+    (40) BinOp -> GREATER .
+
+    NUMBER          reduce using rule 40 (BinOp -> GREATER .)
+    TRUE            reduce using rule 40 (BinOp -> GREATER .)
+    FALSE           reduce using rule 40 (BinOp -> GREATER .)
+    ID              reduce using rule 40 (BinOp -> GREATER .)
+    PAR_OPEN        reduce using rule 40 (BinOp -> GREATER .)
+    READ            reduce using rule 40 (BinOp -> GREATER .)
+    MINUS           reduce using rule 40 (BinOp -> GREATER .)
+    NOT             reduce using rule 40 (BinOp -> GREATER .)
+
+
+state 65
+
+    (41) BinOp -> LESS_EQUAL .
+
+    NUMBER          reduce using rule 41 (BinOp -> LESS_EQUAL .)
+    TRUE            reduce using rule 41 (BinOp -> LESS_EQUAL .)
+    FALSE           reduce using rule 41 (BinOp -> LESS_EQUAL .)
+    ID              reduce using rule 41 (BinOp -> LESS_EQUAL .)
+    PAR_OPEN        reduce using rule 41 (BinOp -> LESS_EQUAL .)
+    READ            reduce using rule 41 (BinOp -> LESS_EQUAL .)
+    MINUS           reduce using rule 41 (BinOp -> LESS_EQUAL .)
+    NOT             reduce using rule 41 (BinOp -> LESS_EQUAL .)
+
+
+state 66
+
+    (42) BinOp -> GREATER_EQUAL .
+
+    NUMBER          reduce using rule 42 (BinOp -> GREATER_EQUAL .)
+    TRUE            reduce using rule 42 (BinOp -> GREATER_EQUAL .)
+    FALSE           reduce using rule 42 (BinOp -> GREATER_EQUAL .)
+    ID              reduce using rule 42 (BinOp -> GREATER_EQUAL .)
+    PAR_OPEN        reduce using rule 42 (BinOp -> GREATER_EQUAL .)
+    READ            reduce using rule 42 (BinOp -> GREATER_EQUAL .)
+    MINUS           reduce using rule 42 (BinOp -> GREATER_EQUAL .)
+    NOT             reduce using rule 42 (BinOp -> GREATER_EQUAL .)
+
+
+state 67
+
+    (43) BinOp -> AND .
+
+    NUMBER          reduce using rule 43 (BinOp -> AND .)
+    TRUE            reduce using rule 43 (BinOp -> AND .)
+    FALSE           reduce using rule 43 (BinOp -> AND .)
+    ID              reduce using rule 43 (BinOp -> AND .)
+    PAR_OPEN        reduce using rule 43 (BinOp -> AND .)
+    READ            reduce using rule 43 (BinOp -> AND .)
+    MINUS           reduce using rule 43 (BinOp -> AND .)
+    NOT             reduce using rule 43 (BinOp -> AND .)
+
+
+state 68
+
+    (44) BinOp -> OR .
+
+    NUMBER          reduce using rule 44 (BinOp -> OR .)
+    TRUE            reduce using rule 44 (BinOp -> OR .)
+    FALSE           reduce using rule 44 (BinOp -> OR .)
+    ID              reduce using rule 44 (BinOp -> OR .)
+    PAR_OPEN        reduce using rule 44 (BinOp -> OR .)
+    READ            reduce using rule 44 (BinOp -> OR .)
+    MINUS           reduce using rule 44 (BinOp -> OR .)
+    NOT             reduce using rule 44 (BinOp -> OR .)
+
+
+state 69
+
+    (62) CmdIf -> IF Expr . COLON Cmd
+    (63) CmdIf -> IF Expr . COLON Cmd ELSE COLON
+    (27) Expr -> Expr . BinOp Expr
+    (32) BinOp -> . PLUS
+    (33) BinOp -> . MINUS
+    (34) BinOp -> . TIMES
+    (35) BinOp -> . EXPO
+    (36) BinOp -> . MOD
+    (37) BinOp -> . DIF
+    (38) BinOp -> . EQUALS
+    (39) BinOp -> . LESS
+    (40) BinOp -> . GREATER
+    (41) BinOp -> . LESS_EQUAL
+    (42) BinOp -> . GREATER_EQUAL
+    (43) BinOp -> . AND
+    (44) BinOp -> . OR
+
+    COLON           shift and go to state 89
+    PLUS            shift and go to state 56
+    MINUS           shift and go to state 57
+    TIMES           shift and go to state 58
+    EXPO            shift and go to state 59
+    MOD             shift and go to state 60
+    DIF             shift and go to state 61
+    EQUALS          shift and go to state 62
+    LESS            shift and go to state 63
+    GREATER         shift and go to state 64
+    LESS_EQUAL      shift and go to state 65
+    GREATER_EQUAL   shift and go to state 66
+    AND             shift and go to state 67
+    OR              shift and go to state 68
+
+    BinOp                          shift and go to state 55
+
+state 70
+
+    (26) Expr -> ID .
+    (30) Expr -> ID . PAR_OPEN ExprList PAR_CLOSE
+
+    COLON           reduce using rule 26 (Expr -> ID .)
+    PLUS            reduce using rule 26 (Expr -> ID .)
+    MINUS           reduce using rule 26 (Expr -> ID .)
+    TIMES           reduce using rule 26 (Expr -> ID .)
+    EXPO            reduce using rule 26 (Expr -> ID .)
+    MOD             reduce using rule 26 (Expr -> ID .)
+    DIF             reduce using rule 26 (Expr -> ID .)
+    EQUALS          reduce using rule 26 (Expr -> ID .)
+    LESS            reduce using rule 26 (Expr -> ID .)
+    GREATER         reduce using rule 26 (Expr -> ID .)
+    LESS_EQUAL      reduce using rule 26 (Expr -> ID .)
+    GREATER_EQUAL   reduce using rule 26 (Expr -> ID .)
+    AND             reduce using rule 26 (Expr -> ID .)
+    OR              reduce using rule 26 (Expr -> ID .)
+    PAR_CLOSE       reduce using rule 26 (Expr -> ID .)
+    $end            reduce using rule 26 (Expr -> ID .)
+    SEMICOLON       reduce using rule 26 (Expr -> ID .)
+    RBRACE          reduce using rule 26 (Expr -> ID .)
+    ELSE            reduce using rule 26 (Expr -> ID .)
+    TO              reduce using rule 26 (Expr -> ID .)
+    COMMA           reduce using rule 26 (Expr -> ID .)
+    PAR_OPEN        shift and go to state 54
+
+
+state 71
+
+    (64) CmdWhile -> WHILE Expr . COLON Cmd
+    (27) Expr -> Expr . BinOp Expr
+    (32) BinOp -> . PLUS
+    (33) BinOp -> . MINUS
+    (34) BinOp -> . TIMES
+    (35) BinOp -> . EXPO
+    (36) BinOp -> . MOD
+    (37) BinOp -> . DIF
+    (38) BinOp -> . EQUALS
+    (39) BinOp -> . LESS
+    (40) BinOp -> . GREATER
+    (41) BinOp -> . LESS_EQUAL
+    (42) BinOp -> . GREATER_EQUAL
+    (43) BinOp -> . AND
+    (44) BinOp -> . OR
+
+    COLON           shift and go to state 90
+    PLUS            shift and go to state 56
+    MINUS           shift and go to state 57
+    TIMES           shift and go to state 58
+    EXPO            shift and go to state 59
+    MOD             shift and go to state 60
+    DIF             shift and go to state 61
+    EQUALS          shift and go to state 62
+    LESS            shift and go to state 63
+    GREATER         shift and go to state 64
+    LESS_EQUAL      shift and go to state 65
+    GREATER_EQUAL   shift and go to state 66
+    AND             shift and go to state 67
+    OR              shift and go to state 68
+
+    BinOp                          shift and go to state 55
+
+state 72
+
+    (65) CmdFor -> FOR CmdAtrib . TO Expr COLON Cmd
+
+    TO              shift and go to state 91
+
+
+state 73
+
+    (67) CmdPrint -> PRINT PAR_OPEN . ExprList PAR_CLOSE
+    (47) ExprList -> . empty
+    (48) ExprList -> . ExprList1
+    (17) empty -> .
+    (49) ExprList1 -> . Expr
+    (50) ExprList1 -> . Expr COMMA ExprList1
+    (23) Expr -> . NUMBER
+    (24) Expr -> . TRUE
+    (25) Expr -> . FALSE
+    (26) Expr -> . ID
+    (27) Expr -> . Expr BinOp Expr
+    (28) Expr -> . UnOp Expr
+    (29) Expr -> . PAR_OPEN Expr PAR_CLOSE
+    (30) Expr -> . ID PAR_OPEN ExprList PAR_CLOSE
+    (31) Expr -> . READ PAR_OPEN PAR_CLOSE
+    (45) UnOp -> . MINUS
+    (46) UnOp -> . NOT
+
+    PAR_CLOSE       reduce using rule 17 (empty -> .)
+    NUMBER          shift and go to state 42
+    TRUE            shift and go to state 43
+    FALSE           shift and go to state 44
+    ID              shift and go to state 70
+    PAR_OPEN        shift and go to state 39
+    READ            shift and go to state 46
+    MINUS           shift and go to state 47
+    NOT             shift and go to state 48
+
+    ExprList                       shift and go to state 92
+    empty                          shift and go to state 85
+    ExprList1                      shift and go to state 86
+    Expr                           shift and go to state 87
+    UnOp                           shift and go to state 45
+
+state 74
+
+    (29) Expr -> PAR_OPEN Expr . PAR_CLOSE
+    (27) Expr -> Expr . BinOp Expr
+    (32) BinOp -> . PLUS
+    (33) BinOp -> . MINUS
+    (34) BinOp -> . TIMES
+    (35) BinOp -> . EXPO
+    (36) BinOp -> . MOD
+    (37) BinOp -> . DIF
+    (38) BinOp -> . EQUALS
+    (39) BinOp -> . LESS
+    (40) BinOp -> . GREATER
+    (41) BinOp -> . LESS_EQUAL
+    (42) BinOp -> . GREATER_EQUAL
+    (43) BinOp -> . AND
+    (44) BinOp -> . OR
+
+    PAR_CLOSE       shift and go to state 93
+    PLUS            shift and go to state 56
+    MINUS           shift and go to state 57
+    TIMES           shift and go to state 58
+    EXPO            shift and go to state 59
+    MOD             shift and go to state 60
+    DIF             shift and go to state 61
+    EQUALS          shift and go to state 62
+    LESS            shift and go to state 63
+    GREATER         shift and go to state 64
+    LESS_EQUAL      shift and go to state 65
+    GREATER_EQUAL   shift and go to state 66
+    AND             shift and go to state 67
+    OR              shift and go to state 68
+
+    BinOp                          shift and go to state 55
+
+state 75
+
+    (68) CmdReturn -> RETURN Expr .
+    (27) Expr -> Expr . BinOp Expr
+    (32) BinOp -> . PLUS
+    (33) BinOp -> . MINUS
+    (34) BinOp -> . TIMES
+    (35) BinOp -> . EXPO
+    (36) BinOp -> . MOD
+    (37) BinOp -> . DIF
+    (38) BinOp -> . EQUALS
+    (39) BinOp -> . LESS
+    (40) BinOp -> . GREATER
+    (41) BinOp -> . LESS_EQUAL
+    (42) BinOp -> . GREATER_EQUAL
+    (43) BinOp -> . AND
+    (44) BinOp -> . OR
+
+    $end            reduce using rule 68 (CmdReturn -> RETURN Expr .)
+    SEMICOLON       reduce using rule 68 (CmdReturn -> RETURN Expr .)
+    RBRACE          reduce using rule 68 (CmdReturn -> RETURN Expr .)
+    ELSE            reduce using rule 68 (CmdReturn -> RETURN Expr .)
+    PLUS            shift and go to state 56
+    MINUS           shift and go to state 57
+    TIMES           shift and go to state 58
+    EXPO            shift and go to state 59
+    MOD             shift and go to state 60
+    DIF             shift and go to state 61
+    EQUALS          shift and go to state 62
+    LESS            shift and go to state 63
+    GREATER         shift and go to state 64
+    LESS_EQUAL      shift and go to state 65
+    GREATER_EQUAL   shift and go to state 66
+    AND             shift and go to state 67
+    OR              shift and go to state 68
+
+    BinOp                          shift and go to state 55
+
+state 76
+
+    (69) CmdSeq -> LBRACE CmdList . RBRACE
+
+    RBRACE          shift and go to state 94
+
+
+state 77
+
+    (70) CmdList -> Cmd . SEMICOLON CmdList
+    (71) CmdList -> Cmd .
+
+    SEMICOLON       shift and go to state 95
+    RBRACE          reduce using rule 71 (CmdList -> Cmd .)
+
+
+state 78
+
+    (28) Expr -> UnOp Expr .
+    (27) Expr -> Expr . BinOp Expr
+    (32) BinOp -> . PLUS
+    (33) BinOp -> . MINUS
+    (34) BinOp -> . TIMES
+    (35) BinOp -> . EXPO
+    (36) BinOp -> . MOD
+    (37) BinOp -> . DIF
+    (38) BinOp -> . EQUALS
+    (39) BinOp -> . LESS
+    (40) BinOp -> . GREATER
+    (41) BinOp -> . LESS_EQUAL
+    (42) BinOp -> . GREATER_EQUAL
+    (43) BinOp -> . AND
+    (44) BinOp -> . OR
+
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for EXPO resolved as shift
+  ! shift/reduce conflict for MOD resolved as shift
+  ! shift/reduce conflict for DIF resolved as shift
+  ! shift/reduce conflict for EQUALS resolved as shift
+  ! shift/reduce conflict for LESS resolved as shift
+  ! shift/reduce conflict for GREATER resolved as shift
+  ! shift/reduce conflict for LESS_EQUAL resolved as shift
+  ! shift/reduce conflict for GREATER_EQUAL resolved as shift
+  ! shift/reduce conflict for AND resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+    $end            reduce using rule 28 (Expr -> UnOp Expr .)
+    COLON           reduce using rule 28 (Expr -> UnOp Expr .)
+    TO              reduce using rule 28 (Expr -> UnOp Expr .)
+    PAR_CLOSE       reduce using rule 28 (Expr -> UnOp Expr .)
+    SEMICOLON       reduce using rule 28 (Expr -> UnOp Expr .)
+    RBRACE          reduce using rule 28 (Expr -> UnOp Expr .)
+    ELSE            reduce using rule 28 (Expr -> UnOp Expr .)
+    COMMA           reduce using rule 28 (Expr -> UnOp Expr .)
+    PLUS            shift and go to state 56
+    MINUS           shift and go to state 57
+    TIMES           shift and go to state 58
+    EXPO            shift and go to state 59
+    MOD             shift and go to state 60
+    DIF             shift and go to state 61
+    EQUALS          shift and go to state 62
+    LESS            shift and go to state 63
+    GREATER         shift and go to state 64
+    LESS_EQUAL      shift and go to state 65
+    GREATER_EQUAL   shift and go to state 66
+    AND             shift and go to state 67
+    OR              shift and go to state 68
+
+  ! PLUS            [ reduce using rule 28 (Expr -> UnOp Expr .) ]
+  ! MINUS           [ reduce using rule 28 (Expr -> UnOp Expr .) ]
+  ! TIMES           [ reduce using rule 28 (Expr -> UnOp Expr .) ]
+  ! EXPO            [ reduce using rule 28 (Expr -> UnOp Expr .) ]
+  ! MOD             [ reduce using rule 28 (Expr -> UnOp Expr .) ]
+  ! DIF             [ reduce using rule 28 (Expr -> UnOp Expr .) ]
+  ! EQUALS          [ reduce using rule 28 (Expr -> UnOp Expr .) ]
+  ! LESS            [ reduce using rule 28 (Expr -> UnOp Expr .) ]
+  ! GREATER         [ reduce using rule 28 (Expr -> UnOp Expr .) ]
+  ! LESS_EQUAL      [ reduce using rule 28 (Expr -> UnOp Expr .) ]
+  ! GREATER_EQUAL   [ reduce using rule 28 (Expr -> UnOp Expr .) ]
+  ! AND             [ reduce using rule 28 (Expr -> UnOp Expr .) ]
+  ! OR              [ reduce using rule 28 (Expr -> UnOp Expr .) ]
+
+    BinOp                          shift and go to state 55
+
+state 79
+
+    (31) Expr -> READ PAR_OPEN . PAR_CLOSE
+
+    PAR_CLOSE       shift and go to state 96
+
+
+state 80
+
+    (20) VarDecl -> VAR ID COLON . Type SEMICOLON
+    (21) Type -> . INT
+    (22) Type -> . BOOL
+
+    INT             shift and go to state 98
+    BOOL            shift and go to state 99
+
+    Type                           shift and go to state 97
+
+state 81
+
+    (11) FunctionBody -> LBRACE VarDecls CmdList . RBRACE
+
+    RBRACE          shift and go to state 100
+
+
+state 82
+
+    (7) FunctionHeader -> FunctionType FUNCTION ID PAR_OPEN . ParamList PAR_CLOSE COLON
+    (12) ParamList -> . empty
+    (13) ParamList -> . ParamList1
+    (17) empty -> .
+    (14) ParamList1 -> . Param COMMA ParamList1
+    (15) ParamList1 -> . Param
+    (16) Param -> . ID COLON Type
+
+    PAR_CLOSE       reduce using rule 17 (empty -> .)
+    ID              shift and go to state 101
+
+    ParamList                      shift and go to state 102
+    empty                          shift and go to state 103
+    ParamList1                     shift and go to state 104
+    Param                          shift and go to state 105
+
+state 83
+
+    (61) CmdAtrib -> ID ASSIGN Expr .
+    (27) Expr -> Expr . BinOp Expr
+    (32) BinOp -> . PLUS
+    (33) BinOp -> . MINUS
+    (34) BinOp -> . TIMES
+    (35) BinOp -> . EXPO
+    (36) BinOp -> . MOD
+    (37) BinOp -> . DIF
+    (38) BinOp -> . EQUALS
+    (39) BinOp -> . LESS
+    (40) BinOp -> . GREATER
+    (41) BinOp -> . LESS_EQUAL
+    (42) BinOp -> . GREATER_EQUAL
+    (43) BinOp -> . AND
+    (44) BinOp -> . OR
+
+    $end            reduce using rule 61 (CmdAtrib -> ID ASSIGN Expr .)
+    TO              reduce using rule 61 (CmdAtrib -> ID ASSIGN Expr .)
+    SEMICOLON       reduce using rule 61 (CmdAtrib -> ID ASSIGN Expr .)
+    RBRACE          reduce using rule 61 (CmdAtrib -> ID ASSIGN Expr .)
+    ELSE            reduce using rule 61 (CmdAtrib -> ID ASSIGN Expr .)
+    PLUS            shift and go to state 56
+    MINUS           shift and go to state 57
+    TIMES           shift and go to state 58
+    EXPO            shift and go to state 59
+    MOD             shift and go to state 60
+    DIF             shift and go to state 61
+    EQUALS          shift and go to state 62
+    LESS            shift and go to state 63
+    GREATER         shift and go to state 64
+    LESS_EQUAL      shift and go to state 65
+    GREATER_EQUAL   shift and go to state 66
+    AND             shift and go to state 67
+    OR              shift and go to state 68
+
+    BinOp                          shift and go to state 55
+
+state 84
+
+    (30) Expr -> ID PAR_OPEN ExprList . PAR_CLOSE
+
+    PAR_CLOSE       shift and go to state 106
+
+
+state 85
+
+    (47) ExprList -> empty .
+
+    PAR_CLOSE       reduce using rule 47 (ExprList -> empty .)
+
+
+state 86
+
+    (48) ExprList -> ExprList1 .
+
+    PAR_CLOSE       reduce using rule 48 (ExprList -> ExprList1 .)
+
+
+state 87
+
+    (49) ExprList1 -> Expr .
+    (50) ExprList1 -> Expr . COMMA ExprList1
+    (27) Expr -> Expr . BinOp Expr
+    (32) BinOp -> . PLUS
+    (33) BinOp -> . MINUS
+    (34) BinOp -> . TIMES
+    (35) BinOp -> . EXPO
+    (36) BinOp -> . MOD
+    (37) BinOp -> . DIF
+    (38) BinOp -> . EQUALS
+    (39) BinOp -> . LESS
+    (40) BinOp -> . GREATER
+    (41) BinOp -> . LESS_EQUAL
+    (42) BinOp -> . GREATER_EQUAL
+    (43) BinOp -> . AND
+    (44) BinOp -> . OR
+
+    PAR_CLOSE       reduce using rule 49 (ExprList1 -> Expr .)
+    COMMA           shift and go to state 107
+    PLUS            shift and go to state 56
+    MINUS           shift and go to state 57
+    TIMES           shift and go to state 58
+    EXPO            shift and go to state 59
+    MOD             shift and go to state 60
+    DIF             shift and go to state 61
+    EQUALS          shift and go to state 62
+    LESS            shift and go to state 63
+    GREATER         shift and go to state 64
+    LESS_EQUAL      shift and go to state 65
+    GREATER_EQUAL   shift and go to state 66
+    AND             shift and go to state 67
+    OR              shift and go to state 68
+
+    BinOp                          shift and go to state 55
+
+state 88
+
+    (27) Expr -> Expr BinOp Expr .
+    (27) Expr -> Expr . BinOp Expr
+    (32) BinOp -> . PLUS
+    (33) BinOp -> . MINUS
+    (34) BinOp -> . TIMES
+    (35) BinOp -> . EXPO
+    (36) BinOp -> . MOD
+    (37) BinOp -> . DIF
+    (38) BinOp -> . EQUALS
+    (39) BinOp -> . LESS
+    (40) BinOp -> . GREATER
+    (41) BinOp -> . LESS_EQUAL
+    (42) BinOp -> . GREATER_EQUAL
+    (43) BinOp -> . AND
+    (44) BinOp -> . OR
+
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for EXPO resolved as shift
+  ! shift/reduce conflict for MOD resolved as shift
+  ! shift/reduce conflict for DIF resolved as shift
+  ! shift/reduce conflict for EQUALS resolved as shift
+  ! shift/reduce conflict for LESS resolved as shift
+  ! shift/reduce conflict for GREATER resolved as shift
+  ! shift/reduce conflict for LESS_EQUAL resolved as shift
+  ! shift/reduce conflict for GREATER_EQUAL resolved as shift
+  ! shift/reduce conflict for AND resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+    $end            reduce using rule 27 (Expr -> Expr BinOp Expr .)
+    COLON           reduce using rule 27 (Expr -> Expr BinOp Expr .)
+    TO              reduce using rule 27 (Expr -> Expr BinOp Expr .)
+    PAR_CLOSE       reduce using rule 27 (Expr -> Expr BinOp Expr .)
+    SEMICOLON       reduce using rule 27 (Expr -> Expr BinOp Expr .)
+    RBRACE          reduce using rule 27 (Expr -> Expr BinOp Expr .)
+    ELSE            reduce using rule 27 (Expr -> Expr BinOp Expr .)
+    COMMA           reduce using rule 27 (Expr -> Expr BinOp Expr .)
+    PLUS            shift and go to state 56
+    MINUS           shift and go to state 57
+    TIMES           shift and go to state 58
+    EXPO            shift and go to state 59
+    MOD             shift and go to state 60
+    DIF             shift and go to state 61
+    EQUALS          shift and go to state 62
+    LESS            shift and go to state 63
+    GREATER         shift and go to state 64
+    LESS_EQUAL      shift and go to state 65
+    GREATER_EQUAL   shift and go to state 66
+    AND             shift and go to state 67
+    OR              shift and go to state 68
+
+  ! PLUS            [ reduce using rule 27 (Expr -> Expr BinOp Expr .) ]
+  ! MINUS           [ reduce using rule 27 (Expr -> Expr BinOp Expr .) ]
+  ! TIMES           [ reduce using rule 27 (Expr -> Expr BinOp Expr .) ]
+  ! EXPO            [ reduce using rule 27 (Expr -> Expr BinOp Expr .) ]
+  ! MOD             [ reduce using rule 27 (Expr -> Expr BinOp Expr .) ]
+  ! DIF             [ reduce using rule 27 (Expr -> Expr BinOp Expr .) ]
+  ! EQUALS          [ reduce using rule 27 (Expr -> Expr BinOp Expr .) ]
+  ! LESS            [ reduce using rule 27 (Expr -> Expr BinOp Expr .) ]
+  ! GREATER         [ reduce using rule 27 (Expr -> Expr BinOp Expr .) ]
+  ! LESS_EQUAL      [ reduce using rule 27 (Expr -> Expr BinOp Expr .) ]
+  ! GREATER_EQUAL   [ reduce using rule 27 (Expr -> Expr BinOp Expr .) ]
+  ! AND             [ reduce using rule 27 (Expr -> Expr BinOp Expr .) ]
+  ! OR              [ reduce using rule 27 (Expr -> Expr BinOp Expr .) ]
+
+    BinOp                          shift and go to state 55
+
+state 89
+
+    (62) CmdIf -> IF Expr COLON . Cmd
+    (63) CmdIf -> IF Expr COLON . Cmd ELSE COLON
+    (51) Cmd -> . CmdAtrib
+    (52) Cmd -> . CmdIf
+    (53) Cmd -> . CmdWhile
+    (54) Cmd -> . CmdFor
+    (55) Cmd -> . CmdBreak
+    (56) Cmd -> . CmdPrint
+    (57) Cmd -> . CmdReturn
+    (58) Cmd -> . CmdSeq
+    (59) CmdAtrib -> . ID
+    (60) CmdAtrib -> . Expr
+    (61) CmdAtrib -> . ID ASSIGN Expr
+    (62) CmdIf -> . IF Expr COLON Cmd
+    (63) CmdIf -> . IF Expr COLON Cmd ELSE COLON
+    (64) CmdWhile -> . WHILE Expr COLON Cmd
+    (65) CmdFor -> . FOR CmdAtrib TO Expr COLON Cmd
+    (66) CmdBreak -> . BREAK
+    (67) CmdPrint -> . PRINT PAR_OPEN ExprList PAR_CLOSE
+    (68) CmdReturn -> . RETURN Expr
+    (69) CmdSeq -> . LBRACE CmdList RBRACE
+    (23) Expr -> . NUMBER
+    (24) Expr -> . TRUE
+    (25) Expr -> . FALSE
+    (26) Expr -> . ID
+    (27) Expr -> . Expr BinOp Expr
+    (28) Expr -> . UnOp Expr
+    (29) Expr -> . PAR_OPEN Expr PAR_CLOSE
+    (30) Expr -> . ID PAR_OPEN ExprList PAR_CLOSE
+    (31) Expr -> . READ PAR_OPEN PAR_CLOSE
+    (45) UnOp -> . MINUS
+    (46) UnOp -> . NOT
+
+    ID              shift and go to state 32
+    IF              shift and go to state 34
+    WHILE           shift and go to state 35
+    FOR             shift and go to state 36
+    BREAK           shift and go to state 37
+    PRINT           shift and go to state 38
+    RETURN          shift and go to state 40
+    LBRACE          shift and go to state 41
+    NUMBER          shift and go to state 42
+    TRUE            shift and go to state 43
+    FALSE           shift and go to state 44
+    PAR_OPEN        shift and go to state 39
+    READ            shift and go to state 46
+    MINUS           shift and go to state 47
+    NOT             shift and go to state 48
+
+    Expr                           shift and go to state 33
+    Cmd                            shift and go to state 108
+    CmdAtrib                       shift and go to state 24
+    CmdIf                          shift and go to state 25
+    CmdWhile                       shift and go to state 26
+    CmdFor                         shift and go to state 27
+    CmdBreak                       shift and go to state 28
+    CmdPrint                       shift and go to state 29
+    CmdReturn                      shift and go to state 30
+    CmdSeq                         shift and go to state 31
+    UnOp                           shift and go to state 45
+
+state 90
+
+    (64) CmdWhile -> WHILE Expr COLON . Cmd
+    (51) Cmd -> . CmdAtrib
+    (52) Cmd -> . CmdIf
+    (53) Cmd -> . CmdWhile
+    (54) Cmd -> . CmdFor
+    (55) Cmd -> . CmdBreak
+    (56) Cmd -> . CmdPrint
+    (57) Cmd -> . CmdReturn
+    (58) Cmd -> . CmdSeq
+    (59) CmdAtrib -> . ID
+    (60) CmdAtrib -> . Expr
+    (61) CmdAtrib -> . ID ASSIGN Expr
+    (62) CmdIf -> . IF Expr COLON Cmd
+    (63) CmdIf -> . IF Expr COLON Cmd ELSE COLON
+    (64) CmdWhile -> . WHILE Expr COLON Cmd
+    (65) CmdFor -> . FOR CmdAtrib TO Expr COLON Cmd
+    (66) CmdBreak -> . BREAK
+    (67) CmdPrint -> . PRINT PAR_OPEN ExprList PAR_CLOSE
+    (68) CmdReturn -> . RETURN Expr
+    (69) CmdSeq -> . LBRACE CmdList RBRACE
+    (23) Expr -> . NUMBER
+    (24) Expr -> . TRUE
+    (25) Expr -> . FALSE
+    (26) Expr -> . ID
+    (27) Expr -> . Expr BinOp Expr
+    (28) Expr -> . UnOp Expr
+    (29) Expr -> . PAR_OPEN Expr PAR_CLOSE
+    (30) Expr -> . ID PAR_OPEN ExprList PAR_CLOSE
+    (31) Expr -> . READ PAR_OPEN PAR_CLOSE
+    (45) UnOp -> . MINUS
+    (46) UnOp -> . NOT
+
+    ID              shift and go to state 32
+    IF              shift and go to state 34
+    WHILE           shift and go to state 35
+    FOR             shift and go to state 36
+    BREAK           shift and go to state 37
+    PRINT           shift and go to state 38
+    RETURN          shift and go to state 40
+    LBRACE          shift and go to state 41
+    NUMBER          shift and go to state 42
+    TRUE            shift and go to state 43
+    FALSE           shift and go to state 44
+    PAR_OPEN        shift and go to state 39
+    READ            shift and go to state 46
+    MINUS           shift and go to state 47
+    NOT             shift and go to state 48
+
+    Expr                           shift and go to state 33
+    Cmd                            shift and go to state 109
+    CmdAtrib                       shift and go to state 24
+    CmdIf                          shift and go to state 25
+    CmdWhile                       shift and go to state 26
+    CmdFor                         shift and go to state 27
+    CmdBreak                       shift and go to state 28
+    CmdPrint                       shift and go to state 29
+    CmdReturn                      shift and go to state 30
+    CmdSeq                         shift and go to state 31
+    UnOp                           shift and go to state 45
+
+state 91
+
+    (65) CmdFor -> FOR CmdAtrib TO . Expr COLON Cmd
+    (23) Expr -> . NUMBER
+    (24) Expr -> . TRUE
+    (25) Expr -> . FALSE
+    (26) Expr -> . ID
+    (27) Expr -> . Expr BinOp Expr
+    (28) Expr -> . UnOp Expr
+    (29) Expr -> . PAR_OPEN Expr PAR_CLOSE
+    (30) Expr -> . ID PAR_OPEN ExprList PAR_CLOSE
+    (31) Expr -> . READ PAR_OPEN PAR_CLOSE
+    (45) UnOp -> . MINUS
+    (46) UnOp -> . NOT
+
+    NUMBER          shift and go to state 42
+    TRUE            shift and go to state 43
+    FALSE           shift and go to state 44
+    ID              shift and go to state 70
+    PAR_OPEN        shift and go to state 39
+    READ            shift and go to state 46
+    MINUS           shift and go to state 47
+    NOT             shift and go to state 48
+
+    Expr                           shift and go to state 110
+    UnOp                           shift and go to state 45
+
+state 92
+
+    (67) CmdPrint -> PRINT PAR_OPEN ExprList . PAR_CLOSE
+
+    PAR_CLOSE       shift and go to state 111
+
+
+state 93
+
+    (29) Expr -> PAR_OPEN Expr PAR_CLOSE .
+
+    PLUS            reduce using rule 29 (Expr -> PAR_OPEN Expr PAR_CLOSE .)
+    MINUS           reduce using rule 29 (Expr -> PAR_OPEN Expr PAR_CLOSE .)
+    TIMES           reduce using rule 29 (Expr -> PAR_OPEN Expr PAR_CLOSE .)
+    EXPO            reduce using rule 29 (Expr -> PAR_OPEN Expr PAR_CLOSE .)
+    MOD             reduce using rule 29 (Expr -> PAR_OPEN Expr PAR_CLOSE .)
+    DIF             reduce using rule 29 (Expr -> PAR_OPEN Expr PAR_CLOSE .)
+    EQUALS          reduce using rule 29 (Expr -> PAR_OPEN Expr PAR_CLOSE .)
+    LESS            reduce using rule 29 (Expr -> PAR_OPEN Expr PAR_CLOSE .)
+    GREATER         reduce using rule 29 (Expr -> PAR_OPEN Expr PAR_CLOSE .)
+    LESS_EQUAL      reduce using rule 29 (Expr -> PAR_OPEN Expr PAR_CLOSE .)
+    GREATER_EQUAL   reduce using rule 29 (Expr -> PAR_OPEN Expr PAR_CLOSE .)
+    AND             reduce using rule 29 (Expr -> PAR_OPEN Expr PAR_CLOSE .)
+    OR              reduce using rule 29 (Expr -> PAR_OPEN Expr PAR_CLOSE .)
+    $end            reduce using rule 29 (Expr -> PAR_OPEN Expr PAR_CLOSE .)
+    COLON           reduce using rule 29 (Expr -> PAR_OPEN Expr PAR_CLOSE .)
+    TO              reduce using rule 29 (Expr -> PAR_OPEN Expr PAR_CLOSE .)
+    PAR_CLOSE       reduce using rule 29 (Expr -> PAR_OPEN Expr PAR_CLOSE .)
+    SEMICOLON       reduce using rule 29 (Expr -> PAR_OPEN Expr PAR_CLOSE .)
+    RBRACE          reduce using rule 29 (Expr -> PAR_OPEN Expr PAR_CLOSE .)
+    ELSE            reduce using rule 29 (Expr -> PAR_OPEN Expr PAR_CLOSE .)
+    COMMA           reduce using rule 29 (Expr -> PAR_OPEN Expr PAR_CLOSE .)
+
+
+state 94
+
+    (69) CmdSeq -> LBRACE CmdList RBRACE .
+
+    $end            reduce using rule 69 (CmdSeq -> LBRACE CmdList RBRACE .)
+    SEMICOLON       reduce using rule 69 (CmdSeq -> LBRACE CmdList RBRACE .)
+    RBRACE          reduce using rule 69 (CmdSeq -> LBRACE CmdList RBRACE .)
+    ELSE            reduce using rule 69 (CmdSeq -> LBRACE CmdList RBRACE .)
+
+
+state 95
+
+    (70) CmdList -> Cmd SEMICOLON . CmdList
+    (70) CmdList -> . Cmd SEMICOLON CmdList
+    (71) CmdList -> . Cmd
+    (51) Cmd -> . CmdAtrib
+    (52) Cmd -> . CmdIf
+    (53) Cmd -> . CmdWhile
+    (54) Cmd -> . CmdFor
+    (55) Cmd -> . CmdBreak
+    (56) Cmd -> . CmdPrint
+    (57) Cmd -> . CmdReturn
+    (58) Cmd -> . CmdSeq
+    (59) CmdAtrib -> . ID
+    (60) CmdAtrib -> . Expr
+    (61) CmdAtrib -> . ID ASSIGN Expr
+    (62) CmdIf -> . IF Expr COLON Cmd
+    (63) CmdIf -> . IF Expr COLON Cmd ELSE COLON
+    (64) CmdWhile -> . WHILE Expr COLON Cmd
+    (65) CmdFor -> . FOR CmdAtrib TO Expr COLON Cmd
+    (66) CmdBreak -> . BREAK
+    (67) CmdPrint -> . PRINT PAR_OPEN ExprList PAR_CLOSE
+    (68) CmdReturn -> . RETURN Expr
+    (69) CmdSeq -> . LBRACE CmdList RBRACE
+    (23) Expr -> . NUMBER
+    (24) Expr -> . TRUE
+    (25) Expr -> . FALSE
+    (26) Expr -> . ID
+    (27) Expr -> . Expr BinOp Expr
+    (28) Expr -> . UnOp Expr
+    (29) Expr -> . PAR_OPEN Expr PAR_CLOSE
+    (30) Expr -> . ID PAR_OPEN ExprList PAR_CLOSE
+    (31) Expr -> . READ PAR_OPEN PAR_CLOSE
+    (45) UnOp -> . MINUS
+    (46) UnOp -> . NOT
+
+    ID              shift and go to state 32
+    IF              shift and go to state 34
+    WHILE           shift and go to state 35
+    FOR             shift and go to state 36
+    BREAK           shift and go to state 37
+    PRINT           shift and go to state 38
+    RETURN          shift and go to state 40
+    LBRACE          shift and go to state 41
+    NUMBER          shift and go to state 42
+    TRUE            shift and go to state 43
+    FALSE           shift and go to state 44
+    PAR_OPEN        shift and go to state 39
+    READ            shift and go to state 46
+    MINUS           shift and go to state 47
+    NOT             shift and go to state 48
+
+    Cmd                            shift and go to state 77
+    CmdList                        shift and go to state 112
+    CmdAtrib                       shift and go to state 24
+    CmdIf                          shift and go to state 25
+    CmdWhile                       shift and go to state 26
+    CmdFor                         shift and go to state 27
+    CmdBreak                       shift and go to state 28
+    CmdPrint                       shift and go to state 29
+    CmdReturn                      shift and go to state 30
+    CmdSeq                         shift and go to state 31
+    Expr                           shift and go to state 33
+    UnOp                           shift and go to state 45
+
+state 96
+
+    (31) Expr -> READ PAR_OPEN PAR_CLOSE .
+
+    PLUS            reduce using rule 31 (Expr -> READ PAR_OPEN PAR_CLOSE .)
+    MINUS           reduce using rule 31 (Expr -> READ PAR_OPEN PAR_CLOSE .)
+    TIMES           reduce using rule 31 (Expr -> READ PAR_OPEN PAR_CLOSE .)
+    EXPO            reduce using rule 31 (Expr -> READ PAR_OPEN PAR_CLOSE .)
+    MOD             reduce using rule 31 (Expr -> READ PAR_OPEN PAR_CLOSE .)
+    DIF             reduce using rule 31 (Expr -> READ PAR_OPEN PAR_CLOSE .)
+    EQUALS          reduce using rule 31 (Expr -> READ PAR_OPEN PAR_CLOSE .)
+    LESS            reduce using rule 31 (Expr -> READ PAR_OPEN PAR_CLOSE .)
+    GREATER         reduce using rule 31 (Expr -> READ PAR_OPEN PAR_CLOSE .)
+    LESS_EQUAL      reduce using rule 31 (Expr -> READ PAR_OPEN PAR_CLOSE .)
+    GREATER_EQUAL   reduce using rule 31 (Expr -> READ PAR_OPEN PAR_CLOSE .)
+    AND             reduce using rule 31 (Expr -> READ PAR_OPEN PAR_CLOSE .)
+    OR              reduce using rule 31 (Expr -> READ PAR_OPEN PAR_CLOSE .)
+    $end            reduce using rule 31 (Expr -> READ PAR_OPEN PAR_CLOSE .)
+    COLON           reduce using rule 31 (Expr -> READ PAR_OPEN PAR_CLOSE .)
+    TO              reduce using rule 31 (Expr -> READ PAR_OPEN PAR_CLOSE .)
+    PAR_CLOSE       reduce using rule 31 (Expr -> READ PAR_OPEN PAR_CLOSE .)
+    SEMICOLON       reduce using rule 31 (Expr -> READ PAR_OPEN PAR_CLOSE .)
+    RBRACE          reduce using rule 31 (Expr -> READ PAR_OPEN PAR_CLOSE .)
+    ELSE            reduce using rule 31 (Expr -> READ PAR_OPEN PAR_CLOSE .)
+    COMMA           reduce using rule 31 (Expr -> READ PAR_OPEN PAR_CLOSE .)
+
+
+state 97
+
+    (20) VarDecl -> VAR ID COLON Type . SEMICOLON
+
+    SEMICOLON       shift and go to state 113
+
+
+state 98
+
+    (21) Type -> INT .
+
+    SEMICOLON       reduce using rule 21 (Type -> INT .)
+    COMMA           reduce using rule 21 (Type -> INT .)
+    PAR_CLOSE       reduce using rule 21 (Type -> INT .)
+
+
+state 99
+
+    (22) Type -> BOOL .
+
+    SEMICOLON       reduce using rule 22 (Type -> BOOL .)
+    COMMA           reduce using rule 22 (Type -> BOOL .)
+    PAR_CLOSE       reduce using rule 22 (Type -> BOOL .)
+
+
+state 100
+
+    (11) FunctionBody -> LBRACE VarDecls CmdList RBRACE .
+
+    INT             reduce using rule 11 (FunctionBody -> LBRACE VarDecls CmdList RBRACE .)
+    BOOL            reduce using rule 11 (FunctionBody -> LBRACE VarDecls CmdList RBRACE .)
+    VOID            reduce using rule 11 (FunctionBody -> LBRACE VarDecls CmdList RBRACE .)
+    VAR             reduce using rule 11 (FunctionBody -> LBRACE VarDecls CmdList RBRACE .)
+    ID              reduce using rule 11 (FunctionBody -> LBRACE VarDecls CmdList RBRACE .)
+    IF              reduce using rule 11 (FunctionBody -> LBRACE VarDecls CmdList RBRACE .)
+    WHILE           reduce using rule 11 (FunctionBody -> LBRACE VarDecls CmdList RBRACE .)
+    FOR             reduce using rule 11 (FunctionBody -> LBRACE VarDecls CmdList RBRACE .)
+    BREAK           reduce using rule 11 (FunctionBody -> LBRACE VarDecls CmdList RBRACE .)
+    PRINT           reduce using rule 11 (FunctionBody -> LBRACE VarDecls CmdList RBRACE .)
+    RETURN          reduce using rule 11 (FunctionBody -> LBRACE VarDecls CmdList RBRACE .)
+    LBRACE          reduce using rule 11 (FunctionBody -> LBRACE VarDecls CmdList RBRACE .)
+    NUMBER          reduce using rule 11 (FunctionBody -> LBRACE VarDecls CmdList RBRACE .)
+    TRUE            reduce using rule 11 (FunctionBody -> LBRACE VarDecls CmdList RBRACE .)
+    FALSE           reduce using rule 11 (FunctionBody -> LBRACE VarDecls CmdList RBRACE .)
+    PAR_OPEN        reduce using rule 11 (FunctionBody -> LBRACE VarDecls CmdList RBRACE .)
+    READ            reduce using rule 11 (FunctionBody -> LBRACE VarDecls CmdList RBRACE .)
+    MINUS           reduce using rule 11 (FunctionBody -> LBRACE VarDecls CmdList RBRACE .)
+    NOT             reduce using rule 11 (FunctionBody -> LBRACE VarDecls CmdList RBRACE .)
+
+
+state 101
+
+    (16) Param -> ID . COLON Type
+
+    COLON           shift and go to state 114
+
+
+state 102
+
+    (7) FunctionHeader -> FunctionType FUNCTION ID PAR_OPEN ParamList . PAR_CLOSE COLON
+
+    PAR_CLOSE       shift and go to state 115
+
+
+state 103
+
+    (12) ParamList -> empty .
+
+    PAR_CLOSE       reduce using rule 12 (ParamList -> empty .)
+
+
+state 104
+
+    (13) ParamList -> ParamList1 .
+
+    PAR_CLOSE       reduce using rule 13 (ParamList -> ParamList1 .)
+
+
+state 105
+
+    (14) ParamList1 -> Param . COMMA ParamList1
+    (15) ParamList1 -> Param .
+
+    COMMA           shift and go to state 116
+    PAR_CLOSE       reduce using rule 15 (ParamList1 -> Param .)
+
+
+state 106
+
+    (30) Expr -> ID PAR_OPEN ExprList PAR_CLOSE .
+
+    PLUS            reduce using rule 30 (Expr -> ID PAR_OPEN ExprList PAR_CLOSE .)
+    MINUS           reduce using rule 30 (Expr -> ID PAR_OPEN ExprList PAR_CLOSE .)
+    TIMES           reduce using rule 30 (Expr -> ID PAR_OPEN ExprList PAR_CLOSE .)
+    EXPO            reduce using rule 30 (Expr -> ID PAR_OPEN ExprList PAR_CLOSE .)
+    MOD             reduce using rule 30 (Expr -> ID PAR_OPEN ExprList PAR_CLOSE .)
+    DIF             reduce using rule 30 (Expr -> ID PAR_OPEN ExprList PAR_CLOSE .)
+    EQUALS          reduce using rule 30 (Expr -> ID PAR_OPEN ExprList PAR_CLOSE .)
+    LESS            reduce using rule 30 (Expr -> ID PAR_OPEN ExprList PAR_CLOSE .)
+    GREATER         reduce using rule 30 (Expr -> ID PAR_OPEN ExprList PAR_CLOSE .)
+    LESS_EQUAL      reduce using rule 30 (Expr -> ID PAR_OPEN ExprList PAR_CLOSE .)
+    GREATER_EQUAL   reduce using rule 30 (Expr -> ID PAR_OPEN ExprList PAR_CLOSE .)
+    AND             reduce using rule 30 (Expr -> ID PAR_OPEN ExprList PAR_CLOSE .)
+    OR              reduce using rule 30 (Expr -> ID PAR_OPEN ExprList PAR_CLOSE .)
+    $end            reduce using rule 30 (Expr -> ID PAR_OPEN ExprList PAR_CLOSE .)
+    COLON           reduce using rule 30 (Expr -> ID PAR_OPEN ExprList PAR_CLOSE .)
+    TO              reduce using rule 30 (Expr -> ID PAR_OPEN ExprList PAR_CLOSE .)
+    PAR_CLOSE       reduce using rule 30 (Expr -> ID PAR_OPEN ExprList PAR_CLOSE .)
+    SEMICOLON       reduce using rule 30 (Expr -> ID PAR_OPEN ExprList PAR_CLOSE .)
+    RBRACE          reduce using rule 30 (Expr -> ID PAR_OPEN ExprList PAR_CLOSE .)
+    ELSE            reduce using rule 30 (Expr -> ID PAR_OPEN ExprList PAR_CLOSE .)
+    COMMA           reduce using rule 30 (Expr -> ID PAR_OPEN ExprList PAR_CLOSE .)
+
+
+state 107
+
+    (50) ExprList1 -> Expr COMMA . ExprList1
+    (49) ExprList1 -> . Expr
+    (50) ExprList1 -> . Expr COMMA ExprList1
+    (23) Expr -> . NUMBER
+    (24) Expr -> . TRUE
+    (25) Expr -> . FALSE
+    (26) Expr -> . ID
+    (27) Expr -> . Expr BinOp Expr
+    (28) Expr -> . UnOp Expr
+    (29) Expr -> . PAR_OPEN Expr PAR_CLOSE
+    (30) Expr -> . ID PAR_OPEN ExprList PAR_CLOSE
+    (31) Expr -> . READ PAR_OPEN PAR_CLOSE
+    (45) UnOp -> . MINUS
+    (46) UnOp -> . NOT
+
+    NUMBER          shift and go to state 42
+    TRUE            shift and go to state 43
+    FALSE           shift and go to state 44
+    ID              shift and go to state 70
+    PAR_OPEN        shift and go to state 39
+    READ            shift and go to state 46
+    MINUS           shift and go to state 47
+    NOT             shift and go to state 48
+
+    Expr                           shift and go to state 87
+    ExprList1                      shift and go to state 117
+    UnOp                           shift and go to state 45
+
+state 108
+
+    (62) CmdIf -> IF Expr COLON Cmd .
+    (63) CmdIf -> IF Expr COLON Cmd . ELSE COLON
+
+  ! shift/reduce conflict for ELSE resolved as shift
+    $end            reduce using rule 62 (CmdIf -> IF Expr COLON Cmd .)
+    SEMICOLON       reduce using rule 62 (CmdIf -> IF Expr COLON Cmd .)
+    RBRACE          reduce using rule 62 (CmdIf -> IF Expr COLON Cmd .)
+    ELSE            shift and go to state 118
+
+  ! ELSE            [ reduce using rule 62 (CmdIf -> IF Expr COLON Cmd .) ]
+
+
+state 109
+
+    (64) CmdWhile -> WHILE Expr COLON Cmd .
+
+    $end            reduce using rule 64 (CmdWhile -> WHILE Expr COLON Cmd .)
+    SEMICOLON       reduce using rule 64 (CmdWhile -> WHILE Expr COLON Cmd .)
+    RBRACE          reduce using rule 64 (CmdWhile -> WHILE Expr COLON Cmd .)
+    ELSE            reduce using rule 64 (CmdWhile -> WHILE Expr COLON Cmd .)
+
+
+state 110
+
+    (65) CmdFor -> FOR CmdAtrib TO Expr . COLON Cmd
+    (27) Expr -> Expr . BinOp Expr
+    (32) BinOp -> . PLUS
+    (33) BinOp -> . MINUS
+    (34) BinOp -> . TIMES
+    (35) BinOp -> . EXPO
+    (36) BinOp -> . MOD
+    (37) BinOp -> . DIF
+    (38) BinOp -> . EQUALS
+    (39) BinOp -> . LESS
+    (40) BinOp -> . GREATER
+    (41) BinOp -> . LESS_EQUAL
+    (42) BinOp -> . GREATER_EQUAL
+    (43) BinOp -> . AND
+    (44) BinOp -> . OR
+
+    COLON           shift and go to state 119
+    PLUS            shift and go to state 56
+    MINUS           shift and go to state 57
+    TIMES           shift and go to state 58
+    EXPO            shift and go to state 59
+    MOD             shift and go to state 60
+    DIF             shift and go to state 61
+    EQUALS          shift and go to state 62
+    LESS            shift and go to state 63
+    GREATER         shift and go to state 64
+    LESS_EQUAL      shift and go to state 65
+    GREATER_EQUAL   shift and go to state 66
+    AND             shift and go to state 67
+    OR              shift and go to state 68
+
+    BinOp                          shift and go to state 55
+
+state 111
+
+    (67) CmdPrint -> PRINT PAR_OPEN ExprList PAR_CLOSE .
+
+    $end            reduce using rule 67 (CmdPrint -> PRINT PAR_OPEN ExprList PAR_CLOSE .)
+    SEMICOLON       reduce using rule 67 (CmdPrint -> PRINT PAR_OPEN ExprList PAR_CLOSE .)
+    RBRACE          reduce using rule 67 (CmdPrint -> PRINT PAR_OPEN ExprList PAR_CLOSE .)
+    ELSE            reduce using rule 67 (CmdPrint -> PRINT PAR_OPEN ExprList PAR_CLOSE .)
+
+
+state 112
+
+    (70) CmdList -> Cmd SEMICOLON CmdList .
+
+    RBRACE          reduce using rule 70 (CmdList -> Cmd SEMICOLON CmdList .)
+
+
+state 113
+
+    (20) VarDecl -> VAR ID COLON Type SEMICOLON .
+
+    VAR             reduce using rule 20 (VarDecl -> VAR ID COLON Type SEMICOLON .)
+    ID              reduce using rule 20 (VarDecl -> VAR ID COLON Type SEMICOLON .)
+    IF              reduce using rule 20 (VarDecl -> VAR ID COLON Type SEMICOLON .)
+    WHILE           reduce using rule 20 (VarDecl -> VAR ID COLON Type SEMICOLON .)
+    FOR             reduce using rule 20 (VarDecl -> VAR ID COLON Type SEMICOLON .)
+    BREAK           reduce using rule 20 (VarDecl -> VAR ID COLON Type SEMICOLON .)
+    PRINT           reduce using rule 20 (VarDecl -> VAR ID COLON Type SEMICOLON .)
+    RETURN          reduce using rule 20 (VarDecl -> VAR ID COLON Type SEMICOLON .)
+    LBRACE          reduce using rule 20 (VarDecl -> VAR ID COLON Type SEMICOLON .)
+    NUMBER          reduce using rule 20 (VarDecl -> VAR ID COLON Type SEMICOLON .)
+    TRUE            reduce using rule 20 (VarDecl -> VAR ID COLON Type SEMICOLON .)
+    FALSE           reduce using rule 20 (VarDecl -> VAR ID COLON Type SEMICOLON .)
+    PAR_OPEN        reduce using rule 20 (VarDecl -> VAR ID COLON Type SEMICOLON .)
+    READ            reduce using rule 20 (VarDecl -> VAR ID COLON Type SEMICOLON .)
+    MINUS           reduce using rule 20 (VarDecl -> VAR ID COLON Type SEMICOLON .)
+    NOT             reduce using rule 20 (VarDecl -> VAR ID COLON Type SEMICOLON .)
+
+
+state 114
+
+    (16) Param -> ID COLON . Type
+    (21) Type -> . INT
+    (22) Type -> . BOOL
+
+    INT             shift and go to state 98
+    BOOL            shift and go to state 99
+
+    Type                           shift and go to state 120
+
+state 115
+
+    (7) FunctionHeader -> FunctionType FUNCTION ID PAR_OPEN ParamList PAR_CLOSE . COLON
+
+    COLON           shift and go to state 121
+
+
+state 116
+
+    (14) ParamList1 -> Param COMMA . ParamList1
+    (14) ParamList1 -> . Param COMMA ParamList1
+    (15) ParamList1 -> . Param
+    (16) Param -> . ID COLON Type
+
+    ID              shift and go to state 101
+
+    Param                          shift and go to state 105
+    ParamList1                     shift and go to state 122
+
+state 117
+
+    (50) ExprList1 -> Expr COMMA ExprList1 .
+
+    PAR_CLOSE       reduce using rule 50 (ExprList1 -> Expr COMMA ExprList1 .)
+
+
+state 118
+
+    (63) CmdIf -> IF Expr COLON Cmd ELSE . COLON
+
+    COLON           shift and go to state 123
+
+
+state 119
+
+    (65) CmdFor -> FOR CmdAtrib TO Expr COLON . Cmd
+    (51) Cmd -> . CmdAtrib
+    (52) Cmd -> . CmdIf
+    (53) Cmd -> . CmdWhile
+    (54) Cmd -> . CmdFor
+    (55) Cmd -> . CmdBreak
+    (56) Cmd -> . CmdPrint
+    (57) Cmd -> . CmdReturn
+    (58) Cmd -> . CmdSeq
+    (59) CmdAtrib -> . ID
+    (60) CmdAtrib -> . Expr
+    (61) CmdAtrib -> . ID ASSIGN Expr
+    (62) CmdIf -> . IF Expr COLON Cmd
+    (63) CmdIf -> . IF Expr COLON Cmd ELSE COLON
+    (64) CmdWhile -> . WHILE Expr COLON Cmd
+    (65) CmdFor -> . FOR CmdAtrib TO Expr COLON Cmd
+    (66) CmdBreak -> . BREAK
+    (67) CmdPrint -> . PRINT PAR_OPEN ExprList PAR_CLOSE
+    (68) CmdReturn -> . RETURN Expr
+    (69) CmdSeq -> . LBRACE CmdList RBRACE
+    (23) Expr -> . NUMBER
+    (24) Expr -> . TRUE
+    (25) Expr -> . FALSE
+    (26) Expr -> . ID
+    (27) Expr -> . Expr BinOp Expr
+    (28) Expr -> . UnOp Expr
+    (29) Expr -> . PAR_OPEN Expr PAR_CLOSE
+    (30) Expr -> . ID PAR_OPEN ExprList PAR_CLOSE
+    (31) Expr -> . READ PAR_OPEN PAR_CLOSE
+    (45) UnOp -> . MINUS
+    (46) UnOp -> . NOT
+
+    ID              shift and go to state 32
+    IF              shift and go to state 34
+    WHILE           shift and go to state 35
+    FOR             shift and go to state 36
+    BREAK           shift and go to state 37
+    PRINT           shift and go to state 38
+    RETURN          shift and go to state 40
+    LBRACE          shift and go to state 41
+    NUMBER          shift and go to state 42
+    TRUE            shift and go to state 43
+    FALSE           shift and go to state 44
+    PAR_OPEN        shift and go to state 39
+    READ            shift and go to state 46
+    MINUS           shift and go to state 47
+    NOT             shift and go to state 48
+
+    CmdAtrib                       shift and go to state 24
+    Expr                           shift and go to state 33
+    Cmd                            shift and go to state 124
+    CmdIf                          shift and go to state 25
+    CmdWhile                       shift and go to state 26
+    CmdFor                         shift and go to state 27
+    CmdBreak                       shift and go to state 28
+    CmdPrint                       shift and go to state 29
+    CmdReturn                      shift and go to state 30
+    CmdSeq                         shift and go to state 31
+    UnOp                           shift and go to state 45
+
+state 120
+
+    (16) Param -> ID COLON Type .
+
+    COMMA           reduce using rule 16 (Param -> ID COLON Type .)
+    PAR_CLOSE       reduce using rule 16 (Param -> ID COLON Type .)
+
+
+state 121
+
+    (7) FunctionHeader -> FunctionType FUNCTION ID PAR_OPEN ParamList PAR_CLOSE COLON .
+
+    LBRACE          reduce using rule 7 (FunctionHeader -> FunctionType FUNCTION ID PAR_OPEN ParamList PAR_CLOSE COLON .)
+
+
+state 122
+
+    (14) ParamList1 -> Param COMMA ParamList1 .
+
+    PAR_CLOSE       reduce using rule 14 (ParamList1 -> Param COMMA ParamList1 .)
+
+
+state 123
+
+    (63) CmdIf -> IF Expr COLON Cmd ELSE COLON .
+
+    $end            reduce using rule 63 (CmdIf -> IF Expr COLON Cmd ELSE COLON .)
+    SEMICOLON       reduce using rule 63 (CmdIf -> IF Expr COLON Cmd ELSE COLON .)
+    RBRACE          reduce using rule 63 (CmdIf -> IF Expr COLON Cmd ELSE COLON .)
+    ELSE            reduce using rule 63 (CmdIf -> IF Expr COLON Cmd ELSE COLON .)
+
+
+state 124
+
+    (65) CmdFor -> FOR CmdAtrib TO Expr COLON Cmd .
+
+    $end            reduce using rule 65 (CmdFor -> FOR CmdAtrib TO Expr COLON Cmd .)
+    SEMICOLON       reduce using rule 65 (CmdFor -> FOR CmdAtrib TO Expr COLON Cmd .)
+    RBRACE          reduce using rule 65 (CmdFor -> FOR CmdAtrib TO Expr COLON Cmd .)
+    ELSE            reduce using rule 65 (CmdFor -> FOR CmdAtrib TO Expr COLON Cmd .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for PLUS in state 78 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 78 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 78 resolved as shift
+WARNING: shift/reduce conflict for EXPO in state 78 resolved as shift
+WARNING: shift/reduce conflict for MOD in state 78 resolved as shift
+WARNING: shift/reduce conflict for DIF in state 78 resolved as shift
+WARNING: shift/reduce conflict for EQUALS in state 78 resolved as shift
+WARNING: shift/reduce conflict for LESS in state 78 resolved as shift
+WARNING: shift/reduce conflict for GREATER in state 78 resolved as shift
+WARNING: shift/reduce conflict for LESS_EQUAL in state 78 resolved as shift
+WARNING: shift/reduce conflict for GREATER_EQUAL in state 78 resolved as shift
+WARNING: shift/reduce conflict for AND in state 78 resolved as shift
+WARNING: shift/reduce conflict for OR in state 78 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 88 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 88 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 88 resolved as shift
+WARNING: shift/reduce conflict for EXPO in state 88 resolved as shift
+WARNING: shift/reduce conflict for MOD in state 88 resolved as shift
+WARNING: shift/reduce conflict for DIF in state 88 resolved as shift
+WARNING: shift/reduce conflict for EQUALS in state 88 resolved as shift
+WARNING: shift/reduce conflict for LESS in state 88 resolved as shift
+WARNING: shift/reduce conflict for GREATER in state 88 resolved as shift
+WARNING: shift/reduce conflict for LESS_EQUAL in state 88 resolved as shift
+WARNING: shift/reduce conflict for GREATER_EQUAL in state 88 resolved as shift
+WARNING: shift/reduce conflict for AND in state 88 resolved as shift
+WARNING: shift/reduce conflict for OR in state 88 resolved as shift
+WARNING: shift/reduce conflict for ELSE in state 108 resolved as shift
+WARNING: reduce/reduce conflict in state 32 resolved using rule (Expr -> ID)
+WARNING: rejected rule (CmdAtrib -> ID) in state 32
+WARNING: Rule (CmdAtrib -> ID) is never reduced
